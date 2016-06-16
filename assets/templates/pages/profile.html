@@ -1,0 +1,125 @@
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Your Profile</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+
+    <div class="col-lg-12 panel panel-default">
+        <div class="col-lg-6 ">
+            <div class="panel-heading" style="font-weight: bold;color: red;font-size: large;">
+                Base profiles
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <div class="col-md-12 base-profile">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="form-group">User name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ng-binding">{{currentUser.username}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="form-group">Email Address</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div>{{currentUser.email}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label class="form-group">Phone Number</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="ng-binding">{{currentUser.phone}}</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <div class="col-lg-6 " style="    border-left: dashed 1px #ddd;">
+            <div class="panel-heading" style="font-weight: bold;color: red;font-size: large;">
+                Change Your Password
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <div class="col-md-12">
+
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <label class="form-group">Old Password</label><sup class="required">*</sup>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="password" ng-model="user.old_password" placeholder="Enter your old password" class="form-control ng-pristine ng-untouched ng-valid">
+                                <div class="ip-error">{{error.old_password}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <label class="form-group">New Password</label><sup class="required">*</sup>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="password" ng-model="user.password" placeholder="Enter your new password" class="form-control ng-pristine ng-untouched ng-valid">
+                                <div class="ip-error">{{error.password}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <label class="form-group">Confirm Your Password</label><sup class="required">*</sup>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="password" ng-model="user.password_confirmation" placeholder="Re-enter password" class="form-control ng-pristine ng-untouched ng-valid">
+                                <div class="ip-error">{{error.password_confirmation}}</div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 ">
+                                <button ng-click="changePassword()" class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<style>
+    .base-profile > div > div:last-child {
+        padding: 0 5px 0 5px;
+        border-left: 1px dashed;
+    }
+input[type='password']{
+    height: 25px !important;
+}
+
+</style>
+<script>
+
+</script>
+
+
+
+
