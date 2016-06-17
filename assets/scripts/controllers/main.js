@@ -18,10 +18,10 @@ angular.module('htxApp')
             //     user    : user.username
             // }
             // $socket.emit('message', data1);
-            console.log('ss'+user);
-            // $rootScope.authenticated = true;
-            // $rootScope.currentUser = user;
-            // $state.go('dashboard.home');
+            console.log('ss',user);
+            $rootScope.authenticated = true;
+            $rootScope.currentUser = user;
+            $state.go('dashboard.home');
         }
         else
         {

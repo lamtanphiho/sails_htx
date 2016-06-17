@@ -36,6 +36,7 @@ module.exports.routes = {
     view: 'main'
   },
   'POST /auth/login': 'AuthController.authenticate',
+   'GET /api/authenticate/user': 'AuthController.user',
   // users =========================================
   
 

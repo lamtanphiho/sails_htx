@@ -20,7 +20,7 @@ var htxApp = angular
       .state('dashboard', {
         url:'/dashboard',
             controller: 'MainCtrl',
-        // templateUrl: 'templates/dashboard/main.html',
+       
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
@@ -47,4 +47,19 @@ var htxApp = angular
                 }
             }
     })
+      .state('dashboard.home',{
+        url:'/home',
+        controller: 'HomeCtrl',
+        templateUrl: 'templates/dashboard/main.html',
+        resolve: {
+          loadMyFiles:function($ocLazyLoad) {
+            return $ocLazyLoad.load({
+              name:'htxApp',
+              files:[
+                'scripts/controllers/homeCtrl.js',
+              ]
+            })
+          }
+        }
+      })
        }]);

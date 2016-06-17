@@ -1,9 +1,3 @@
-/**
- * AuthController
- *
- * @description :: Server-side logic for managing auths
- * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
- */
 
 module.exports = {
 	authenticate: function(req, res) {
@@ -33,5 +27,16 @@ module.exports = {
             });
         });
     },
+     user: function(req, res) {
+
+        tokenService.parse(req)
+            .then(function(user) {console.log(user);
+                return res.json(200, { user: user });
+            })
+            .catch(function(err) {console.log(err);
+                return res.json(401, { error: 'token_invalid' });
+            })
+    },
+    
 };
 

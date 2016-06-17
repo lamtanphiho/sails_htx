@@ -7,8 +7,8 @@
  *
  * Main module of the application.
  */
-var app = angular
-  .module('betApp', [
+var htxApp = angular
+  .module('htxApp', [
         'ngSocket',
         'satellizer',
     'oc.lazyLoad',
@@ -107,20 +107,20 @@ var app = angular
       .state('dashboard', {
         url:'/dashboard',
             controller: 'MainCtrl',
-        templateUrl: 'app/views/dashboard/main.html',
+        // templateUrl: 'app/views/dashboard/main.html',
         resolve: {
             loadMyDirectives:function($ocLazyLoad){
                 return $ocLazyLoad.load(
                 {
-                    name:'betApp',
+                    name:'htxApp',
                     files:[
 
-                        'app/scripts/service/DateTimeModule.js',
-                        'app/scripts/controllers/main.js',
-                    'app/scripts/directives/header/header.js',
-                    'app/scripts/directives/header/header-notification/header-notification.js',
-                    'app/scripts/directives/sidebar/sidebar.js',
-                    'app/scripts/directives/sidebar/sidebar-search/sidebar-search.js'
+                    //     'app/scripts/service/DateTimeModule.js',
+                        'scripts/controllers/main.js',
+                    // 'app/scripts/directives/header/header.js',
+                    // 'app/scripts/directives/header/header-notification/header-notification.js',
+                    // 'app/scripts/directives/sidebar/sidebar.js',
+                    // 'app/scripts/directives/sidebar/sidebar-search/sidebar-search.js'
                     ]
                 }),
                 $ocLazyLoad.load(

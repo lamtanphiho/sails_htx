@@ -45,18 +45,14 @@ htxApp.controller('AuthController',  function($auth, $state,$http,$rootScope, $s
                
                 var user = JSON.stringify(response.data.user);
 
-                localStorage.setItem('userAdmin', user);
+                localStorage.setItem('userHtx', user);
 
                 $rootScope.authenticated = true;
                 $rootScope.currentUser = response.data.user;
                 $scope.loginError = false;
                 $scope.loginErrorText = '';
                 $state.go('dashboard');
-                var credentials = {
-                    username : $rootScope.currentUser.username,
-                    session : localStorage.getItem('satellizer_token')
-                };
-                $socket.emit('auth.login', credentials);
+                
             }
 
         });

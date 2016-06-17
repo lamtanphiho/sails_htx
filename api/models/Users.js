@@ -5,9 +5,10 @@
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
  */
 var bcrypt = require('bcryptjs');
+var Promise = require('bluebird');
 var uniqueEmail = false;
 module.exports = {
-
+ schema: true,
   attributes: {
   	
         username: { 
@@ -69,17 +70,6 @@ module.exports = {
             required: 'Phone is required',
             phone: 'Phone does not match format',
             unique: 'Phone number is already taken',
-        },
-        bank_account_number: {
-            required: 'Bank account number id is required',
-            minLength: 'Bank account number must be at least 10 characters.',
-            maxLength: 'Bank account number may not be greater than 15 characters.',
-            unique: 'Account number is already taken',
-        },
-        bank_account_name: {
-            required: 'Bank account name id is required',
-            minLength: 'Bank account number must be at least 3 characters.',
-            maxLength: 'Bank account number may not be greater than 30 characters.'
         }
     },
 
@@ -89,6 +79,10 @@ module.exports = {
                 uniqueEmail = !user;
                 next();
             })
+    },
+    beforeUpdate: function (values, next) {
+        CipherService.hashPassword(values);
+        next();
     },
    beforeCreate: function(values, next) {
         bcrypt.genSalt(10, function(err, salt) {
@@ -111,11 +105,5 @@ module.exports = {
             }
         })
     },
-     /**
-     * Validated password format
-     */
-    validatePassword: function(value) {
-        return _.isString(value) && value.length >= 6 && value.match(/[a-z]/i) && value.match(/[0-9]/);
-    }
 };
 
