@@ -1,15 +1,15 @@
 /**
  * Created by lamtanphiho on 3/30/2016.
  */
-app.controller('memberCtrl', function($socket, $auth, $state, $http, $rootScope, $scope, ngDialog) {
+app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope, ngDialog) {
     $scope.init = function() {
         $scope.child = '';
         $http({
-            url: 'api/public/index.php/member/list',
-            method: "POST"
+            url: 'users',
+            method: "GET"
         }).success(function (data) {
             $scope.memberList = data;
-            //console.log(data)
+            console.log(data)
         }).error(function (response) {// ?�y nek
             console.log(response.error);
             if (response.error == 'token_not_provided')

@@ -1,10 +1,10 @@
 'use strict';
 /**
  * @ngdoc function
- * @name betApp.controller:MainCtrl
+ * @name htxApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the betApp
+ * Controller of the htxApp
  */
 app
   .controller('ChartCtrl', ['$scope', '$timeout', function ($scope, $timeout) {

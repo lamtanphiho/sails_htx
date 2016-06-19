@@ -28,12 +28,15 @@
     "rc": "1.0.1",
     "sails": "~0.12.3",
     "sails-disk": "~0.10.9",
+    "sails-hook-user-acl": "*",
     "sails-hook-validation": "^0.4.6",
     "jsonwebtoken": "*",
     "passport": "*",
     "passport-jwt": "*",
     "passport-local": "*",
     "bcrypt-nodejs": "*",
+    "bcryptjs": "*",
+    "bluebird": "*"
   },
   "scripts": {
     "debug": "node debug app.js",

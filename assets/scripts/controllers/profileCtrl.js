@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name betApp.controller:MainCtrl
+ * @name htxApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the betApp
+ * Controller of the htxApp
  */
-angular.module('betApp')
+angular.module('htxApp')
     .controller('profileCtrl', function($socket, $auth, $state, $http, $rootScope, $scope, ngDialog) {
 
         // Run this function at initial

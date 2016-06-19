@@ -1,0 +1,194 @@
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Quản lý thành viên</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12 ">
+        <table id="tlb-field" >
+
+            <tr>
+                <td>
+                    <b>Tên đăng nhập:</b>
+                </td>
+                <td style="padding-right: 20px">
+                    <input style="float: right; width: 90%" class="form-control" type="text" value="" id="search-member-id">
+                </td>
+
+                <td>
+                    <input ng-click="searchMember()"  style="    padding: 5px 10px;" class="form-control btn-success" type="button" value="Tìm" id="search-submit">
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: bold;color: red;font-size: large;">
+                Danh sách thành viên
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                   <table class="table table-striped table-bordered table-hover">
+                       <tr>
+                           <th>Tên đăng nhập</th>
+                           <th>Họ tên</th>
+                           <th>Thuộc</th>
+                           <th>SĐT</th>
+                           <th>Vai trò</th>
+                           <th>Email</th>
+                          
+                           <th>Tác vụ</th>
+                           <th>Chi tiết</th>
+
+                       </tr>
+                       <tr class="role-{{mem.role_id}}" ng-repeat="mem in memberList">
+                           <td>{{mem.username}}</td>
+                           <td>{{mem.fullname}}</td>
+                           <td>{{mem.parent_id}}</td>
+                           <td>{{mem.phone}}</td>
+                           <td>{{mem.name}}</td>
+                           <td>{{mem.email}}</td>
+                           
+                           <td>
+                               <button ng-click="showEditInfo(mem)"  title="Edit info" type="button" class="btn btn-info btn-circle"><i class="fa fa-pencil "></i>
+                               </button>
+                               <button ng-if="mem.role_id < 5 && mem.username != currentUser.username" ng_click="showAssignPermissions(mem)"  title="Assign permissions" type="button" class="btn btn-info btn-circle"><i class="fa fa-retweet"></i></button>
+
+                           </td>
+
+                           <td style="text-align: center" >
+                               <button  ng_click="showDetailmember(mem)"  title="info" type="button" class="btn btn-info btn-circle"><i class="fa fa-list"></i>
+                               </button>
+                           </td>
+
+                       </tr>
+                   </table>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+    <!--============================================= model: Edit info =========================-->
+    <div class="modal fade" id="editInfo" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="background: snow">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                    <h4 class="modal-title">Edit info</h4>
+                </div>
+                <div class="modal-body row">
+                    <input type="hidden" id="user_id">
+                    <div class="form-group col-md-6">
+                        <label for="pass">New password:</label>
+                        <input type="text" class="form-control" id="pass">
+                        <div class="ip-error">{{error.password}}</div>
+                        <label for="passConfirm">New password confirm:</label>
+                        <input type="text" class="form-control" id="passConfirm">
+                        <div class="ip-error">{{error.password_confirmation}}</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="bankName">Bank name:</label>
+                        <select type="text" class="form-control" id="bankName"></select>
+                        <label for="bankAccount">Bank account name:</label>
+                        <input type="text" class="form-control" id="bankAccount">
+                        <label for="bankNo">Bank account no:</label>
+                        <input type="text" class="form-control" id="bankNo">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveEditInfo" class="btn btn-primary" ng_click="saveEditInfo()">Save</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--============================================= model: assign permissions =========================-->
+    <div class="modal fade" id="assignPermission" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="background: snow">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                    <h4 class="modal-title">Assign Permissions</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="assign" class="btn btn-primary" ng_click="assignPermission()">Assign</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- /.row -->
+<style>
+    .modal-dialog {
+        width: 800px !important;
+    }
+    table,.role-3{
+        /*background: rgba(244, 67, 54, 0.89);*/
+    }
+    table,.td2{
+        border-right: none !important;
+    }
+    #modal-tran tr{
+        background: #f9f9f9 !important;
+    }
+    #tlb-field{
+        margin-bottom: 10px;
+    }
+    .small{
+        width: 80%;
+        height: 25px;
+        margin: 0 10px;
+    }
+
+</style>
+<script>
+    //        check box : begin ------------------------------------------
+
+
+//    if(start_date != '')
+//    {
+//        $('.check-single').prop('checked', false);
+//        $('#dpd1').val(start_date);
+//        $('#dpd2').val(end_date);
+//        $.each(JSON.parse(fill) ,function(key, index){
+//            $('#'+index).prop('checked', 'checked');
+//        });
+//    }
+    if( $('.check-all').prop('checked') == true)
+        $('.check-single').prop('checked', false);
+    $('.check-all').click(function(){
+        $('.check-single').attr('checked', false);
+    });
+    $('.check-single').click(function(){
+        $('.check-all').attr('checked',false);
+    });
+    //        checkbox: end ----------------------------
+
+</script>
+
+
+
+

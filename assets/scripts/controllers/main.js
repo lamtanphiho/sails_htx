@@ -1,10 +1,10 @@
 'use strict';
 /**
  * @ngdoc function
- * @name betApp.controller:MainCtrl
+ * @name htxApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the betApp
+ * Controller of the htxApp
  */
 angular.module('htxApp')
   .controller('MainCtrl', function($auth,$scope,$position,  $rootScope, $state, ngDialog) {
@@ -18,35 +18,17 @@ angular.module('htxApp')
             //     user    : user.username
             // }
             // $socket.emit('message', data1);
-            console.log('ss',user);
+            // console.log('ss',user);
             $rootScope.authenticated = true;
             $rootScope.currentUser = user;
-            $state.go('dashboard.home');
+            $state.go('dashboard.member');
         }
         else
         {
-            console.log(2);
+            // console.log(2);
             $state.go('login');
         }
-        // $scope.selectedMenu = 'dashboard';
-        // $scope.collapseVar = 0;
-        // $scope.multiCollapseVar = 0;
 
-        // $scope.check = function(x){
-
-        //     if(x==$scope.collapseVar)
-        //         $scope.collapseVar = 0;
-        //     else
-        //         $scope.collapseVar = x;
-        // };
-
-        // $scope.multiCheck = function(y){
-
-        //     if(y==$scope.multiCollapseVar)
-        //         $scope.multiCollapseVar = 0;
-        //     else
-        //         $scope.multiCollapseVar = y;
-        // };
         // //============================ logout ===================================
         //  $rootScope.$on("LOGOUT", function(){
         //      if(typeof ($rootScope.currentUser)!='undefined')
@@ -72,19 +54,19 @@ angular.module('htxApp')
         //      }
         // });
         // //=================================================================
-        // var offCallMeFn = $rootScope.$on("INSUFFICIENT_PERMISSIONS", function(){
+        var offCallMeFn = $rootScope.$on("Forbidden", function(){
 
-        //     $scope.loginErrorText = 'You are not authorized to access this resource !';
-        //     ngDialog.open({
+            $scope.loginErrorText = 'You are not authorized to access this resource !';
+            ngDialog.open({
 
-        //         // Config dialog
-        //         template: 'app/views/dialog/popupTmpl.html',
-        //         className: 'ngdialog-theme-flat ngdialog-theme-custom',
-        //         scope: $scope
-        //     });
-        // });
-        // $scope.$on('$destroy', function() {
-        //     offCallMeFn();
-        // });
+                // Config dialog
+                template: 'templates/dialog/popupTmpl.html',
+                className: 'ngdialog-theme-flat ngdialog-theme-custom',
+                scope: $scope
+            });
+        });
+        $scope.$on('$destroy', function() {
+            offCallMeFn();
+        });
 
     });

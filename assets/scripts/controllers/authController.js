@@ -1,7 +1,7 @@
 /**
  * Created by lamtanphiho on 3/12/2016.
  */
-htxApp.controller('AuthController',  function($auth, $state,$http,$rootScope, $scope, ngDialog) {
+app.controller('AuthController',  function($auth, $state,$http,$rootScope, $scope, ngDialog) {
 
     $scope.username='';
     $scope.password='';
@@ -20,18 +20,22 @@ htxApp.controller('AuthController',  function($auth, $state,$http,$rootScope, $s
             return $http.get( 'api/authenticate/user');
 
         },  function(error) {
-            //console.log(error);
+            console.log(error);
             $scope.loginError = true;
             switch (error.data.error)
             {
                 case 'invalid_credentials':
-                    $scope.loginErrorText = 'Username or password invalid !'
+                    $scope.loginErrorText = 'Username or password invalid !';
+                    break;
+                default:
+                $scope.loginErrorText = error.data.error;
+                    break;
             }
 
             ngDialog.open({
 
                 // Config dialog
-                template: 'app/views/dialog/popupTmpl.html',
+                template: 'templates/dialog/popupTmpl.html',
                 className: 'ngdialog-theme-flat ngdialog-theme-custom',
                 scope: $scope
             });

@@ -1,7 +1,7 @@
 (function() {
 
     angular
-        .module('betApp')
+        .module('htxApp')
         .factory('$DateTime', DateTimeService);
 
 

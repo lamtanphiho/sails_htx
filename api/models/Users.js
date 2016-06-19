@@ -14,6 +14,9 @@ module.exports = {
         username: { 
             type: 'string', required: true, unique: true, alphanumericdashed: true
         },
+        parent_id: { 
+            type: 'string', required: true, unique: true, alphanumericdashed: true
+        },
         email: {
             type: 'email', required: true, uniqueEmail: true
         },
@@ -26,6 +29,12 @@ module.exports = {
         fullname:{
         	type:'string', required: true
         },
+        role      : {
+          type     : "string",
+          required : true,
+          enum     : ['user', 'agent', 'admin'] // or sails.config.acl.roles
+        },
+
 
 
         // We don't wan't to send back encrypted password either

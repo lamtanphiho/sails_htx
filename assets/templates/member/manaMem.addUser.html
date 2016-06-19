@@ -1,0 +1,127 @@
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Management Member</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: bold;color: red;font-size: large;">
+                Add user
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="usr">Username<sup class="required">*</sup></label>
+                                <input type="text" class="form-control" id="usr" ng-model="member.username">
+                                <div class="ip-error">{{error.username}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="pass">Password<sup class="required">*</sup></label>
+                                <input type="password" class="form-control" id="pass"  ng-model="member.password">
+                                <div class="ip-error">{{error.password}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="email">Email<sup class="required">*</sup></label>
+                                <input type="text" class="form-control" id="email"  ng-model="member.email">
+                                <div class="ip-error">{{error.email}}</div>
+                            </div>
+                        </div>
+                        </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone"  ng-model="member.phone">
+                                <div class="ip-error">{{error.phone}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="role">Confirm password</label>
+                                <input type="password" class="form-control" id="confirm"  ng-model="member.password_confirmation">
+                                <div class="ip-error">{{error.password_confirmation}}</div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="role">Role</label>
+                                <select ng-model = "member.role" class="form-control" id="role">
+                                    <option ng-repeat="role in member.roles">{{role.name}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <input ng-click="add_User()"  style="line-height: 8px;" class="form-control btn-success" type="button" value="Submit" id="adduser-submit">
+
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<style>
+    table,.td1{
+        border-left: none !important;
+    }
+    table,.td2{
+        border-right: none !important;
+    }
+    #modal-tran tr{
+        background: #f9f9f9 !important;
+    }
+    #tlb-field{
+        margin-bottom: 10px;
+    }
+    .small{
+        width: 80%;
+        height: 25px;
+        margin: 0 10px;
+    }
+
+</style>
+<script>
+
+</script>
+
+
+
+

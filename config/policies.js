@@ -27,7 +27,7 @@ module.exports.policies = {
   ***************************************************************************/
 
   // '*': true,
-//'*': ['tokenAuth'], // Everything resctricted here
+'*': ['tokenAuth'], // Everything resctricted here
    
   /***************************************************************************
   *                                                                          *

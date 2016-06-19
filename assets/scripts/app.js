@@ -1,9 +1,9 @@
 'use strict';
 /**
  * @ngdoc overview
- * @name betApp
+ * @name htxApp
  * @description
- * # betApp
+ * # htxApp
  *
  * Main module of the application.
  */
@@ -165,7 +165,7 @@ var htxApp = angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'betApp',
+              name:'htxApp',
               files:[
               'app/scripts/controllers/winLoseReportCtrl.js'
               ]})
@@ -179,7 +179,7 @@ var htxApp = angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'betApp',
+              name:'htxApp',
               files:[
               'app/scripts/controllers/transactionBetCtrl.js'
               ]})
@@ -193,7 +193,7 @@ var htxApp = angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'betApp',
+              name:'htxApp',
               files:[
               'app/scripts/controllers/reportTransferCtrl.js'
               ]})
@@ -207,7 +207,7 @@ var htxApp = angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'betApp',
+              name:'htxApp',
               files:[
               'app/scripts/controllers/reportRabatCtrl.js'
               ]})
@@ -221,7 +221,7 @@ var htxApp = angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'betApp',
+              name:'htxApp',
               files:[
               'app/scripts/controllers/reportExtraCtrl.js'
               ]})
@@ -235,7 +235,7 @@ var htxApp = angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'betApp',
+              name:'htxApp',
               files:[
               'app/scripts/controllers/reportWelcomeCtrl.js'
               ]})
@@ -249,7 +249,7 @@ var htxApp = angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'betApp',
+              name:'htxApp',
               files:[
               'app/scripts/controllers/management_games.js',
 
@@ -265,7 +265,7 @@ var htxApp = angular
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'betApp',
+              name:'htxApp',
               files:[
               'app/scripts/controllers/transaction.js',
               //'app/bower_components/angular-audio/app/angular.audio.js',
@@ -284,7 +284,7 @@ var htxApp = angular
             resolve: {
                 loadMyFiles:function($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name:'betApp',
+                        name:'htxApp',
                         files:[
                             'app/scripts/controllers/transaction.js',
                             //'app/bower_components/angular-audio/app/angular.audio.js',
@@ -303,7 +303,7 @@ var htxApp = angular
             resolve: {
                 loadMyFiles:function($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name:'betApp',
+                        name:'htxApp',
                         files:[
                             'app/scripts/controllers/transaction.js',
                             //'app/bower_components/angular-audio/app/angular.audio.js',
@@ -323,7 +323,7 @@ var htxApp = angular
                 loadMyDirectives: function ($ocLazyLoad) {
                     return $ocLazyLoad.load(
                         {
-                            name: 'betApp',
+                            name: 'htxApp',
                             files: [
                                 'app/scripts/controllers/memberCtrl.js',
                             ]
@@ -339,7 +339,7 @@ var htxApp = angular
                 loadMyDirectives: function ($ocLazyLoad) {
                     return $ocLazyLoad.load(
                         {
-                            name: 'betApp',
+                            name: 'htxApp',
                             files: [
                                 'app/scripts/controllers/addMemberCtrl.js',
                             ]
@@ -356,7 +356,7 @@ var htxApp = angular
                 loadMyDirectives: function ($ocLazyLoad) {
                     return $ocLazyLoad.load(
                         {
-                            name: 'betApp',
+                            name: 'htxApp',
                             files: [
                                 'app/scripts/controllers/profileCtrl.js',
                             ]
@@ -383,7 +383,7 @@ var htxApp = angular
             resolve: {
                 loadMyFiles:function($ocLazyLoad) {
                     return $ocLazyLoad.load({
-                        name:'betApp',
+                        name:'htxApp',
                         files:[
                             'app/scripts/controllers/authController.js',
                         ]
@@ -405,7 +405,7 @@ var htxApp = angular
               ]
             }),
             $ocLazyLoad.load({
-                name:'betApp',
+                name:'htxApp',
                 files:['scripts/controllers/chartContoller.js']
             })
           }

@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('betApp')
+        .module('htxApp')
         .factory('$excel', ExcelService);
 
     function ExcelService($window) {

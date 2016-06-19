@@ -1,4 +1,4 @@
-
+var session = {};
 module.exports = {
 	authenticate: function(req, res) {
 
@@ -31,6 +31,7 @@ module.exports = {
 
         tokenService.parse(req)
             .then(function(user) {console.log(user);
+                session.role = user.role;
                 return res.json(200, { user: user });
             })
             .catch(function(err) {console.log(err);

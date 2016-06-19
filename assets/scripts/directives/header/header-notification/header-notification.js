@@ -6,10 +6,10 @@
  * @description
  * # adminPosHeader
  */
-angular.module('betApp')
+angular.module('htxApp')
 	.directive('headerNotification',function(){
 		return {
-        templateUrl:'app/scripts/directives/header/header-notification/header-notification.html',
+        templateUrl:'scripts/directives/header/header-notification/header-notification.html',
         restrict: 'E',
         replace: true,
     	}

@@ -18,6 +18,14 @@
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
   'bower_components/bootstrap/dist/css/bootstrap.min.css',
+  'bower_components/metisMenu/dist/metisMenu.min.css',
+  'bower_components/angular-loading-bar/build/loading-bar.min.css',
+  'bower_components/font-awesome/css/font-awesome.min.css',
+   
+  'bower_components/ng-dialog/css/ngDialog.css',
+  'bower_components/ng-dialog/css/ngDialog-theme-flat.css',
+  'bower_components/ng-dialog/css/ngDialog-theme-default.css',
+  'bower_components/ng-dialog/css/ngDialog-theme-plain.css',
   'styles/**/*.css'
 ];
 

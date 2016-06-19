@@ -9,7 +9,7 @@
 app
 	.directive('notifications',function(){
 		return {
-        templateUrl:'app/scripts/directives/notifications/notifications.html',
+        templateUrl:'scripts/directives/notifications/notifications.html',
         restrict: 'E',
         replace: true,
     	}

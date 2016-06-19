@@ -9,7 +9,7 @@
 app
 	.directive('header',function(){
 		return {
-        templateUrl:'app/scripts/directives/header/header.html',
+        templateUrl:'scripts/directives/header/header.html',
         restrict: 'E',
         replace: true,
     	}

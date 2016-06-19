@@ -7,10 +7,10 @@
  * # adminPosHeader
  */
 
-angular.module('betApp')
+angular.module('htxApp')
   .directive('sidebarSearch',function() {
     return {
-      templateUrl:'app/scripts/directives/sidebar/sidebar-search/sidebar-search.html',
+      templateUrl:'scripts/directives/sidebar/sidebar-search/sidebar-search.html',
       restrict: 'E',
       replace: true,
       scope: {
