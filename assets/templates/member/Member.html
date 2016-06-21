@@ -24,6 +24,11 @@
                     <input ng-click="searchMember()"  style="    padding: 5px 10px;" class="form-control btn-success" type="button" value="Tìm" id="search-submit">
 
                 </td>
+                <td style="min-width:30px"></td>
+                <td>
+                        <a ui-sref="dashboard.memberadd" class="form-control btn btn-success">Thêm</a>
+                </td>
+
             </tr>
         </table>
     </div>
@@ -54,7 +59,7 @@
                            <td>{{mem.fullname}}</td>
                            <td>{{mem.parent_id}}</td>
                            <td>{{mem.phone}}</td>
-                           <td>{{mem.name}}</td>
+                           <td>{{mem.role}}</td>
                            <td>{{mem.email}}</td>
                            
                            <td>

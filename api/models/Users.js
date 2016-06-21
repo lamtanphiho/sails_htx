@@ -15,7 +15,7 @@ module.exports = {
             type: 'string', required: true, unique: true, alphanumericdashed: true
         },
         parent_id: { 
-            type: 'string', required: true, unique: true, alphanumericdashed: true
+            type: 'string', required: true, alphanumericdashed: true
         },
         email: {
             type: 'email', required: true, uniqueEmail: true

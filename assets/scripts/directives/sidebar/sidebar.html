@@ -3,7 +3,7 @@
         <ul class="nav in" id="side-menu">
             <sidebar-search></sidebar-search>
             <li ng-class="{active: collapseVar==1}">
-                <a ng-click="check(1)"  data-toggle="collapse" data-target="#menu-gamesList"><i class="fa fa-futbol-o"></i> Games List<span class="fa arrow"></span></a>
+                <a ng-click="check(1)"  data-toggle="collapse"><i class="fa fa-futbol-o"></i> Games List<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level"  id="menu-gamesList" >
                     <li>
                         <a ui-sref="dashboard.gameManagement">Management Games List</a>
@@ -11,8 +11,8 @@
                 </ul>
                
             </li>
-            <li ng-class="{active: collapseVar==1}">
-                <a ng-click="check(1)"  data-toggle="collapse" data-target="#menu-history-bet"><i class="fa fa-file-text-o"></i> History - bet<span class="fa arrow"></span></a>
+            <li ng-class="{active: collapseVar==2}">
+                <a ng-click="check(2)"  data-toggle="collapse" data-ta><i class="fa fa-file-text-o"></i> History - bet<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level"  id="menu-history-bet" >
                     <li>
                         <a ui-sref="dashboard.transactionBet">Transaction bet</a>
@@ -23,8 +23,8 @@
                 </ul>
 
             </li>
-            <li ng-class="{active: collapseVar==1}">
-                <a ng-click="check(1)"  data-toggle="collapse" data-target="#menu-report"><i class="fa fa-file-text"></i> Report - bonus<span class="fa arrow"></span></a>
+            <li ng-class="{active: collapseVar==3}">
+                <a ng-click="check(3)"  data-toggle="collapse"><i class="fa fa-file-text"></i> Report - bonus<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level"  id="menu-report" >
                     <li>
                         <a ui-sref="dashboard.reportRabat">Rabat bonus</a>
@@ -41,8 +41,8 @@
                 </ul>
 
             </li>
-            <li ng-class="{active: collapseVar==1}">
-                <a ng-click="check(1)"  data-toggle="collapse" data-target="#menu-tran"><i class="fa fa-exchange  fa-fw"></i> Transactions<span class="fa arrow"></span></a>
+            <li ng-class="{active: collapseVar==3}">
+                <a ng-click="check(3)"  data-toggle="collapse"><i class="fa fa-exchange  fa-fw"></i> Transactions<span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level"  id="menu-tran" >
                     <li>
                         <a ui-sref="dashboard.home">Transaction</a>

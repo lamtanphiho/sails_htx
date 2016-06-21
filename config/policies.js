@@ -28,7 +28,14 @@ module.exports.policies = {
 
   // '*': true,
 '*': ['tokenAuth'], // Everything resctricted here
-   
+    
+    AuthController:{
+      'authenticate': true,
+      'user': ['tokenAuth'],
+    },
+    UsersController: {
+      '*':['tokenAuth', 'userPolicies']
+    }
   /***************************************************************************
   *                                                                          *
   * Here's an example of mapping some policies to run before a controller    *

@@ -1,7 +1,6 @@
-var session = {};
+
 module.exports = {
 	authenticate: function(req, res) {
-
         var ticket = req.body;
 
         if (!ticket.username || !ticket.password) {
@@ -30,11 +29,10 @@ module.exports = {
      user: function(req, res) {
 
         tokenService.parse(req)
-            .then(function(user) {console.log(user);
-                session.role = user.role;
+            .then(function(user) {
                 return res.json(200, { user: user });
             })
-            .catch(function(err) {console.log(err);
+            .catch(function(err) {
                 return res.json(401, { error: 'token_invalid' });
             })
     },

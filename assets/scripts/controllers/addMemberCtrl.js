@@ -1,7 +1,7 @@
 /**
  * Created by lamtanphiho on 3/30/2016.
  */
-app.controller('addMemberCtrl', function($socket, $auth, $state, $http, $rootScope, $scope, ngDialog) {
+app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $scope, ngDialog) {
     // Run this function at initial
     $scope.ini = function() {
         $scope.member = {
@@ -12,21 +12,11 @@ app.controller('addMemberCtrl', function($socket, $auth, $state, $http, $rootSco
             phone : '',
             roles : {},
         }
-
-        $http({
-            url:  'api/public/member/getRole',
-            method: "POST"
-        }).success(function (data) {
-            $scope.member.roles = data;
-            $scope.member.role = data[0].name;
-
-        }).error(function(response){
-            console.log(response.error);
-            if( response.error == 'token_not_provided')
-                $state.go('login');
-        });
-
-
+        var user = JSON.parse(localStorage.getItem('userHtx'));
+        if(user.role == 'admin')
+            $scope.member.roles = {0:'agent', 1:'user'};
+        else
+            $scope.member.roles = {0:'user'};
     }
     $scope.reset = function () {
         $scope.error = {

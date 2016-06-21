@@ -110,6 +110,22 @@ var app = angular
                 }
             }
         })
+      .state('dashboard.memberadd', {
+            url: 'member/create',
+            templateUrl: 'templates/member/manaMem.addUser.html',
+            controller: 'addMemberCtrl',
+            resolve: {
+                loadMyDirectives: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        {
+                            name: 'htxApp',
+                            files: [
+                                'scripts/controllers/addMemberCtrl.js',
+                            ]
+                        })
+                }
+            }
+        })
       .state('login',{
         templateUrl:'templates/pages/login.html',
         url:'/login',

@@ -26,11 +26,11 @@ module.exports.acl = {
         // '/' : {
         //    view       : 'main' //Accessible to anyone
         // },
-        '/users' : {
-           controller : 'UsersController',
+        // '/users' : {
+           // controller : 'UsersController',
            // action     : "home",
-           roles      : ["admin"]//Accessible only for admin
-        }   
+           // "roles"      : ["admin"]//Accessible only for admin
+        // }   
         /* Examples
          "GET /user" : {
          "roles" : ["user", "admin"]
