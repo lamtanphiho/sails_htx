@@ -9,7 +9,7 @@ app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope,
             method: "GET"
         }).success(function (data) {
             $scope.memberList = data;
-            console.log(data)
+            // console.log(data)
         }).error(function (response) {// ?�y nek
             console.log(response.error);
             if (response.error == 'token_not_provided')

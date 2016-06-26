@@ -24,7 +24,7 @@ module.exports = {
             type: 'string', required: true, password: true
         },
         phone: {
-            type: 'string', required: true, phone: true, unique: true
+            type: 'string', required: true, unique: true
         },
         fullname:{
         	type:'string', required: true
@@ -77,7 +77,7 @@ module.exports = {
         },
         phone: {
             required: 'Phone is required',
-            phone: 'Phone does not match format',
+            // phone: 'Phone does not match format',
             unique: 'Phone number is already taken',
         }
     },
@@ -101,7 +101,8 @@ module.exports = {
                 values.password = hash;
                 next();
             })
-        })
+        });
+        return res.json(401, { error: 'tao thit' });
     },
    comparePassword: function(password, user, callback) {
         bcrypt.compare(password, user.password, function(err, match) {
