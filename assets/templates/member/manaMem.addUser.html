@@ -46,7 +46,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" class="form-control" id="phone"  ng-model="member.phone">
+                                <input type="text" class="form-control" id="phone"  ng-model="member.phone" only-digits>
                                 <div class="ip-error">{{error.phone}}</div>
                             </div>
                         </div>
@@ -63,15 +63,15 @@
                                 <select ng-model = "member.role" class="form-control" id="role" ng-change="showInputMember()">
                                     <option value="{{role}}" ng-repeat="role in member.roles">{{role}}</option>
                                 </select>
+                                <div class="ip-error">{{error.role}}</div>
+
                             </div>
                         </div>
 
                     </div>
                     </div>
                     <!-- ==================================== tài xế ===================================== -->
-                    <div id="taixe" style="display:none; border-top: 3px dotted darkgray;
-    padding-top: 20px;
-    margin-top: 20px;">
+                    <div id="taixe" style="display:none; border-top: 3px dotted darkgray;padding-top: 20px;margin-top: 20px;">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
@@ -83,7 +83,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="date_born">Ngày sinh<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepicker8'>
+                                    <div class='input-group date' id='datetimepicker_1'>
                                     <input type="text" class="form-control" id="date_born" ng-model="taixe.date_born">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -119,14 +119,15 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngaycap_cmnd">Ngày cấp CMND<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepickér'>
+                                    <div class='input-group date' id='datetimepicker_6'>
                                         <input type="text" class="form-control" id="ngaycap_cmnd" ng-model="taixe.ngaycap_cmnd">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     
-                                        <div class="ip-error">{{error.ngaycap_cmnd}}</div>
                                     </div>
+                                        <div class="ip-error">{{error.ngaycap_cmnd}}</div>
+                                    
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -157,7 +158,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngay_gplx">Ngày cấp GPLX<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepickèr'>
+                                    <div class='input-group date' id='datetimepicker_8'>
                                         <input type="text" class="form-control" id="ngay_gplx" ng-model="taixe.ngay_gplx">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -170,7 +171,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngayhet_gplx">Ngày hết hạn GPLX<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepickẻr'>
+                                    <div class='input-group date' id='datetimepicker_9'>
                                         <input type="text" class="form-control" id="ngayhet_gplx" ng-model="taixe.ngayhet_gplx">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -201,7 +202,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngay_cnthnv">Ngày cấp CNTHNV<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepickẽr'>
+                                    <div class='input-group date' id='datetimepicker_10'>
                                         <input type="text" class="form-control" id="ngay_cnthnv" ng-model="taixe.ngay_cnthnv">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -214,7 +215,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngayhet_cnthnv">Ngày hết hạn CNTHNV<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepickẹr'>
+                                    <div class='input-group date' id='datetimepicker_11'>
                                         <input type="text" class="form-control" id="ngayhet_cnthnv" ng-model="taixe.ngayhet_cnthnv">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -237,7 +238,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngaykham_suckhoe">Ngày khám sức khỏe<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepickêr'>
+                                    <div class='input-group date' id='datetimepicker_12'>
                                         <input type="text" class="form-control" id="ngaykham_suckhoe" ng-model="taixe.ngaykham_suckhoe">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -250,7 +251,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngayhet_suckhoe">Ngày hết hạn GKSK<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepicker7'>
+                                    <div class='input-group date' id='datetimepicker_2'>
                                         <input type="text" class="form-control" id="ngayhet_suckhoe" ng-model="taixe.ngayhet_suckhoe">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -293,13 +294,13 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngaysinh">Ngày sinh<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepicker8'>
+                                    <div class='input-group date' id='datetimepicker_3'>
                                     <input type="text" class="form-control" id="ngaysinh" ng-model="chuxe.ngaysinh">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
-                                        <div class="ip-error">{{error.ngaysinh}}</div>
                                     </div>
+                                        <div class="ip-error">{{error.ngaysinh}}</div>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -336,14 +337,14 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngaycap_cmnd">Ngày cấp CMND<sup class="required">*</sup></label>
-                                    <div class='input-group date' id='datetimepicker8'>
+                                    <div class='input-group date' id='datetimepicker_4'>
                                         <input type="text" class="form-control" id="ngaycap_cmnd" ng-model="chuxe.ngaycap_cmnd">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
                                         </span>
                                     
-                                        <div class="ip-error">{{error.ngaycap_cmnd}}</div>
                                     </div>
+                                        <div class="ip-error">{{error.ngaycap_cmnd}}</div>
                                 </div>
                             </div>
                             </div>
@@ -366,7 +367,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngaycap_cancuoc">Ngày cấp Căn cước</label>
-                                    <div class='input-group date' id='datetimepicker8'>
+                                    <div class='input-group date' id='datetimepicker_7'>
                                         <input type="text" class="form-control" id="ngaycap_cancuoc" ng-model="chuxe.ngaycap_cancuoc">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -395,7 +396,7 @@
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngaycap_hochieu">Ngày cấp Hộ chiếu</label>
-                                    <div class='input-group date' id='datetimepicker8'>
+                                    <div class='input-group date' id='datetimepicker_5'>
                                         <input type="text" class="form-control" id="ngaycap_hochieu" ng-model="chuxe.ngaycap_hochieu">
                                         <span class="input-group-addon">
                                             <span class="glyphicon glyphicon-calendar"></span>

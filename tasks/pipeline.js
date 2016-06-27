@@ -26,6 +26,8 @@ var cssFilesToInject = [
   'bower_components/ng-dialog/css/ngDialog-theme-flat.css',
   'bower_components/ng-dialog/css/ngDialog-theme-default.css',
   'bower_components/ng-dialog/css/ngDialog-theme-plain.css',
+  'bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+
   'styles/**/*.css'
 ];
 
@@ -47,6 +49,8 @@ var jsFilesToInject = [
   'bower_components/bootstrap/dist/js/bootstrap.min.js',
   'bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
   'bower_components/angular-loading-bar/build/loading-bar.min.js',
+  'bower_components/moment/moment.js',
+  'bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
 
 
 

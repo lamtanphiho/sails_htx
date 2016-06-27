@@ -20,7 +20,9 @@
     "metisMenu": "~1.1.3",
     "angular-chart.js": "~0.5.2",
     "ng-dialog": "*",
-    "satellizer": "~0.10.1"
+    "satellizer": "~0.10.1",
+    "moment":"*",
+    "eonasdan-bootstrap-datetimepicker":"*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.16",
