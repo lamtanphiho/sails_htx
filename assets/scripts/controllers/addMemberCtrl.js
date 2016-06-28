@@ -46,9 +46,31 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
             ngaycap_cmnd:'',
             dtdd:''
         };
-        $scope.taixe ={};
+        $scope.taixe ={
+             fullname:'',
+            date_born:'',
+            address:'',
+            quoctich:'',
+            cmnd:'',
+            noicap_cmnd:'',
+            ngaycap_cmnd:'',
+            so_giayphep_laixe:'',
+            hang:'',
+            loaixe_duoclai:'',
+            ngay_gplx:'',
+            ngayhet_gplx:'',
+            noicap_gplx:'',
+            so_cnthnv:'',
+            ngay_cnthnv:'',
+            ngayhet_cnthnv:'',
+            noicap_cnthnv:'',
+            ngaykham_suckhoe:'',
+            ngayhet_suckhoe:'',
+            
+        };
         $scope.error = {};
         var user = JSON.parse(localStorage.getItem('userHtx'));
+        $scope.member.parent_id = user.username;
         if(user.role == 'admin')
             $scope.member.roles = {0:'agent', 1:'user'};
         else
@@ -99,26 +121,66 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
                     
                     format: 'YYYY-MM-DD'
                 }); 
-                $('#datetimepicker_9').datetimepicker({
-                    defaultDate: currentDate,
-                    
-                    format: 'YYYY-MM-DD'
-                }); 
-                $('#datetimepicker_10').datetimepicker({
-                    defaultDate: currentDate,
-                    
-                    format: 'YYYY-MM-DD'
-                }); 
-                $('#datetimepicker_11').datetimepicker({
-                    defaultDate: currentDate,
-                    
-                    format: 'YYYY-MM-DD'
-                }); 
-                $('#datetimepicker_12').datetimepicker({
-                    defaultDate: currentDate,
-                    
-                    format: 'YYYY-MM-DD'
-                });
+        $('#datetimepicker_9').datetimepicker({
+            defaultDate: currentDate,
+            
+            format: 'YYYY-MM-DD'
+        }); 
+        $('#datetimepicker_10').datetimepicker({
+            defaultDate: currentDate,
+            
+            format: 'YYYY-MM-DD'
+        }); 
+        $('#datetimepicker_11').datetimepicker({
+            defaultDate: currentDate,
+            
+            format: 'YYYY-MM-DD'
+        }); 
+        $('#datetimepicker_12').datetimepicker({
+            defaultDate: currentDate,
+            
+            format: 'YYYY-MM-DD'
+        });
+
+        $scope.getCountrys();
+        $scope.getHangBanglai();
+        $scope.getTinh();
+    }
+    $scope.getTinh = function(){
+        var req = {
+            method: 'GET',
+            url: 'tinh'
+        };
+        $http(req)
+        .then(function(response) {
+            $scope.tinhs = response.data;
+         }, function(error) {
+            console.log(error);
+        });
+    }
+    $scope.getHangBanglai = function(){
+        var req = {
+            method: 'GET',
+            url: 'banglai'
+        };
+        $http(req)
+        .then(function(response) {
+            $scope.banglais = response.data;
+         }, function(error) {
+            console.log(error);
+        });
+    }
+    $scope.getCountrys = function(){
+        var req = {
+            method: 'GET',
+            url: 'country'
+        };
+        $http(req)
+        .then(function(response) {
+            $scope.countrys = response.data;
+         }, function(error) {
+            console.log(error);
+        });
     }
     $scope.reset = function () {
         $.each($scope.error, function(k, v){
@@ -144,7 +206,7 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
                 result: true
             };
             $.each(arr, function(key, value){
-                if(value == '' || fielt.indexOf(value) >-1){
+                if(value == '' && fielt.indexOf(value) >-1){
                     result.result = false;
                     $scope.error[key] = 'Vui lòng nhập ' + key;
                 }
@@ -162,16 +224,25 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
     }
     
     $scope.add_User = function(){
-        var listRequireUser = 'username password password_confirmation email phone role';
+        var listRequireUser = 'username password password_confirmation email phone role address';
         var listRequireChuxe ='ngaysinh donvi chu_dautu quoctich hktt cmnd noicap_cmnd ngaycap_cmnd dtdd';
         
         var listRequireTaixe = 'fullname date_born quoctich cmnd noicap_cmnd ngaycap_cmnd so_giayphep_laixe hang loaixe_duoclai ngay_gplx ngayhet_gplx noicap_gplx so_cnthnv ngay_cnthnv ngayhet_cnthnv noicap_cnthnv ngaykham_suckhoe ngayhet_suckhoe';
-            
-        var req = {
-            method: 'POST',
-            url: 'api/public/member/create',
-            data: $scope.member
-        }
+         var check = false;   
+        $scope.chuxe.ngaysinh           = $('#ngaysinh').val();
+        $scope.chuxe.ngaycap_cmnd       = $('#ngaycap_cmnd-cx').val();
+        $scope.chuxe.ngaycap_hochieu    = $('#ngaycap_hochieu').val();
+        $scope.chuxe.ngaycap_cancuoc    = $('#ngaycap_cancuoc').val();
+        // ------------------------------------------------------------------------------
+        $scope.taixe.date_born          = $('#date_born').val();
+        $scope.taixe.ngaycap_cmnd       = $('#ngaycap_cmnd').val();
+        $scope.taixe.ngay_gplx          = $('#ngay_gplx').val();
+        $scope.taixe.ngayhet_gplx       = $('#ngayhet_gplx').val();
+        $scope.taixe.ngay_cnthnv        = $('#ngay_cnthnv').val();
+        $scope.taixe.ngayhet_cnthnv     = $('#ngayhet_cnthnv').val();
+        $scope.taixe.ngaykham_suckhoe   = $('#ngaykham_suckhoe').val();
+        $scope.taixe.ngayhet_suckhoe    = $('#ngayhet_suckhoe').val();
+       
         $scope.reset();
         if($scope.validate.checkRequire($scope.member, listRequireUser).result == true){
             if($scope.validate.validateEmail($scope.member.email) == false){
@@ -182,39 +253,59 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
 
             }
             if($scope.member.role == 'agent'){
-                $scope.validate.checkRequire($scope.chuxe, listRequireChuxe);
+                check = $scope.validate.checkRequire($scope.chuxe, listRequireChuxe).result;
                 
             }else{
-                $scope.validate.checkRequire($scope.taixe, listRequireTaixe);
+                check = $scope.validate.checkRequire($scope.taixe, listRequireTaixe).result;
 
             }
 
         }
-        else
-        console.log($scope.member);
-    //     $http(req)
-    //         .then(function(response) {
-    //             console.log(response);
-    //             $scope.message = response.data.msg;
-    //             ngDialog.open({
+        if(check == true){
+            var req = {
+                method: 'POST',
+                url: 'users/create',
+                data: $scope.member
+            }
+            $http(req)
+            .then(function(response) {
+                var label = $scope.member.role == 'agent' ? 'chuxe' : 'taixe';
+                $scope[label].username = $scope.member.username;
+                var req = {
+                    method: 'POST',
+                    url: label+'/create',
+                    data: $scope[label]
+                }
+                $http(req)
+                .then(function(response) {
+                    // console.log(response);
+                    $scope.message = 'Tạo thành viên thành công !!!';
+                    ngDialog.open({
 
-    //                 // Config dialog
-    //                 template: 'app/views/dialog/popupSuccess.html',
-    //                 className: 'ngdialog-theme-flat ngdialog-theme-custom',
-    //                 scope: $scope
-    //             });
+                        // Config dialog
+                        template: 'templates/dialog/popupSuccess.html',
+                        className: 'ngdialog-theme-flat ngdialog-theme-custom',
+                        scope: $scope
+                    });
+                 }, function(error) {
 
-    //         }, function(error) {
+                    angular.forEach(error.data.Errors, function(value, key) {
+                    $scope.error[key] = value[0].message;
+                    console.log(key, value);
+                })
+                });
+                
 
-    //             angular.forEach(error.data.error.data, function(value, key) {
-    //                 $scope.error[key] = value[0];
-
-    //             })
-
-
-
-
-    //         });
+            }, function(error) {
+                console.log(error.data.Errors);
+                angular.forEach(error.data.Errors, function(value, key) {
+                    $scope.error[key] = value[0].message;
+                    console.log(key, value);
+                })
+            });
+        }else
+        console.log($scope.taixe);
+        
     }
 
 

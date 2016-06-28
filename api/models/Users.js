@@ -26,9 +26,7 @@ module.exports = {
         phone: {
             type: 'string', required: true, unique: true
         },
-        fullname:{
-        	type:'string', required: true
-        },
+        
         role      : {
           type     : "string",
           required : true,
@@ -63,7 +61,7 @@ module.exports = {
         email: {
             required: 'Email is required',
             email: 'Provide valid email address',
-            uniqueEmail: 'Email address is already taken',
+            uniqueEmail: 'Email đã tồn tại !!!',
             regex: 'Email does not match format'
         },
         username: {
@@ -73,7 +71,7 @@ module.exports = {
         },
         password: {
             required: 'Password is required',
-            password: 'Password does not match format'
+            password: 'Password không đúng format (123123Aa) !!!'
         },
         phone: {
             required: 'Phone is required',
@@ -102,7 +100,7 @@ module.exports = {
                 next();
             })
         });
-        return res.json(401, { error: 'tao thit' });
+        
     },
    comparePassword: function(password, user, callback) {
         bcrypt.compare(password, user.password, function(err, match) {

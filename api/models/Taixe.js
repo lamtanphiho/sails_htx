@@ -69,7 +69,7 @@ module.exports = {
         	type:'datetime', required: true
         }, 
         ghichu:{
-        	type:'text', required: true
+        	type:'text'
         }
   }
 };

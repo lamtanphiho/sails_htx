@@ -60,7 +60,7 @@ module.exports = {
         	type:'string', required: true
         },
         ghichu:{
-        	type:'text', required: true
+        	type:'text'
         }
   }
 };
