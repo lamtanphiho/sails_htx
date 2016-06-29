@@ -30,6 +30,7 @@
     "sails-disk": "~0.10.9",
     "sails-hook-user-acl": "*",
     "sails-hook-validation": "^0.4.6",
+    "sails-mysql":"*",
     "jsonwebtoken": "*",
     "passport": "*",
     "passport-jwt": "*",
