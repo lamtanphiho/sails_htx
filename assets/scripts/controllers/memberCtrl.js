@@ -5,7 +5,7 @@ app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope,
     $scope.init = function() {
         $scope.child = '';
         $http({
-            url: 'users',
+            url: 'users/list-user',
             method: "GET"
         }).success(function (data) {
             $scope.memberList = data;

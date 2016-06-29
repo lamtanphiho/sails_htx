@@ -37,6 +37,7 @@ module.exports.routes = {
   },
   'POST /auth/login': 'AuthController.authenticate',
    'GET /api/authenticate/user': 'AuthController.user',
+   'GET /users/list-user': 'UsersController.getListUser',
   // users =========================================
   
 
