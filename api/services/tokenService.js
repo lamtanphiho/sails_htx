@@ -19,10 +19,10 @@ module.exports = {
                     })
                    
                     .catch(function(err) {
-                        return reject(new Error({error: 'invalid_token'}));
+                        return reject(new Error({error: 'invalid_token', position: 3}));
                     })
             } else {
-                return reject(new Error({error: 'invalid_token'}));
+                return reject(new Error({error: 'invalid_token', position: 4}));
             }
         })
     },

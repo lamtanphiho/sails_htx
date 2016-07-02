@@ -22,7 +22,7 @@
       }
     };
 });
-app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $scope, ngDialog) {
+app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $scope, ngDialog,$General) {
     // Run this function at initial
     
     $scope.ini = function() {
@@ -101,21 +101,13 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
                     
                     format: 'YYYY-MM-DD'
                 });
-         $('#datetimepicker_5').datetimepicker({
-                    defaultDate: currentDate,
-                    
-                    format: 'YYYY-MM-DD'
-                });
+         
          $('#datetimepicker_6').datetimepicker({
                     defaultDate: currentDate,
                     
                     format: 'YYYY-MM-DD'
                 });
-         $('#datetimepicker_7').datetimepicker({
-                    defaultDate: currentDate,
-                    
-                    format: 'YYYY-MM-DD'
-                });
+         
          $('#datetimepicker_8').datetimepicker({
                     defaultDate: currentDate,
                     
@@ -200,28 +192,7 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
         }
 
     }
-     $scope.validate = {
-        checkRequire : function(arr, fielt){
-            var result = {
-                result: true
-            };
-            $.each(arr, function(key, value){
-                if(value == '' && fielt.indexOf(value) >-1){
-                    result.result = false;
-                    $scope.error[key] = 'Vui lòng nhập ' + key;
-                }
-
-            });
-            return result;
-        },
-        validateEmail : function(email) {
-          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return re.test(email);
-        },
-        validatePass : function(pass, pass_confirm){
-            return (pass == pass_confirm);
-        }
-    }
+     
     
     $scope.add_User = function(){
         var listRequireUser = 'username password password_confirmation email phone role address';
@@ -231,8 +202,6 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
          var check = false;   
         $scope.chuxe.ngaysinh           = $('#ngaysinh').val();
         $scope.chuxe.ngaycap_cmnd       = $('#ngaycap_cmnd-cx').val();
-        $scope.chuxe.ngaycap_hochieu    = $('#ngaycap_hochieu').val();
-        $scope.chuxe.ngaycap_cancuoc    = $('#ngaycap_cancuoc').val();
         // ------------------------------------------------------------------------------
         $scope.taixe.date_born          = $('#date_born').val();
         $scope.taixe.ngaycap_cmnd       = $('#ngaycap_cmnd').val();
@@ -244,22 +213,27 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
         $scope.taixe.ngayhet_suckhoe    = $('#ngayhet_suckhoe').val();
        
         $scope.reset();
-        if($scope.validate.checkRequire($scope.member, listRequireUser).result == true){
-            if($scope.validate.validateEmail($scope.member.email) == false){
+        var checkRequire = $General.checkRequire($scope.member, listRequireUser);
+        if(checkRequire.result == true){
+            if($General.validateEmail($scope.member.email) == false){
                 $scope.error.email = 'Email không hợp lệ !';
             }else{
-                if($scope.validate.validatePass($scope.member.password, $scope.member.password_confirmation) == false)
+                if($General.validatePass($scope.member.password, $scope.member.password_confirmation) == false)
                     $scope.error.password_confirmation = 'Mật khẩu không giống nhau !';
 
             }
             if($scope.member.role == 'agent'){
-                check = $scope.validate.checkRequire($scope.chuxe, listRequireChuxe).result;
+                check = $General.checkRequire($scope.chuxe, listRequireChuxe).result;
                 
             }else{
-                check = $scope.validate.checkRequire($scope.taixe, listRequireTaixe).result;
+                check = $General.checkRequire($scope.taixe, listRequireTaixe).result;
 
             }
 
+        }else{
+            $.each(check.key, function(key, index){
+                $scope.error[index] = 'Vui lòng nhập '+ index;
+            });
         }
         if(check == true){
             var req = {

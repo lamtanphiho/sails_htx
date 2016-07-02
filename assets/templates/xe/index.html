@@ -1,0 +1,191 @@
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Quản lý xe</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12 ">
+        <table id="tlb-field" >
+
+            <tr>
+                <td>
+                    <b>Biển kiểm soát:</b>
+                </td>
+                <td style="padding-right: 20px">
+                    <input style="float: right; width: 90%" class="form-control" type="text" value="" id="search-member-id">
+                </td>
+
+                <td>
+                    <input ng-click="searchMember()"  style="    padding: 5px 10px;" class="form-control btn-success" type="button" value="Tìm" id="search-submit">
+
+                </td>
+                <td style="min-width:30px"></td>
+                <td>
+                        <a ui-sref="dashboard.xeadd" class="form-control btn btn-success">Thêm</a>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: bold;color: red;font-size: large;">
+                Danh sách xe
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                   <table class="table table-striped table-bordered table-hover">
+                       <tr>
+                           <th>Biển số</th>
+                           <th>Hiệu xe</th>
+                           <th>Loại xe</th>
+                           <th>Trọng tải</th>
+                           <th>Nước sx</th>
+                           <th>Số khung</th>
+                          
+                           <th>Số máy</th>
+                           <th>Chi tiết</th>
+
+                       </tr>
+                       <tr ng-repeat="x in xe">
+                           <td>{{x.bien_so}}</td>
+                           <td>{{x.hieu_xe}}</td>
+                           <td>{{x.loai_xe}}</td>
+                           <td>{{x.trong_tai}}</td>
+                           <td>{{x.nuoc_sx}}</td>
+                           <td>{{x.so_khung}}</td>
+                           <td>{{x.so_may}}</td>
+                           
+                           <td style="text-align: center" >
+                               <button  ng_click="showDetailmember(mem)"  title="info" type="button" class="btn btn-info btn-circle"><i class="fa fa-list"></i>
+                               </button>
+                           </td>
+
+                       </tr>
+                   </table>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+    <!--============================================= model: Edit info =========================-->
+    <div class="modal fade" id="editInfo" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="background: snow">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                    <h4 class="modal-title">Edit info</h4>
+                </div>
+                <div class="modal-body row">
+                    <input type="hidden" id="user_id">
+                    <div class="form-group col-md-6">
+                        <label for="pass">New password:</label>
+                        <input type="text" class="form-control" id="pass">
+                        <div class="ip-error">{{error.password}}</div>
+                        <label for="passConfirm">New password confirm:</label>
+                        <input type="text" class="form-control" id="passConfirm">
+                        <div class="ip-error">{{error.password_confirmation}}</div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="bankName">Bank name:</label>
+                        <select type="text" class="form-control" id="bankName"></select>
+                        <label for="bankAccount">Bank account name:</label>
+                        <input type="text" class="form-control" id="bankAccount">
+                        <label for="bankNo">Bank account no:</label>
+                        <input type="text" class="form-control" id="bankNo">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveEditInfo" class="btn btn-primary" ng_click="saveEditInfo()">Save</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--============================================= model: assign permissions =========================-->
+    <div class="modal fade" id="assignPermission" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content" style="background: snow">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                    <h4 class="modal-title">Assign Permissions</h4>
+                </div>
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="assign" class="btn btn-primary" ng_click="assignPermission()">Assign</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<!-- /.row -->
+<style>
+    .modal-dialog {
+        width: 800px !important;
+    }
+    
+    table,.td2{
+        border-right: none !important;
+    }
+    #modal-tran tr{
+        background: #f9f9f9 !important;
+    }
+    #tlb-field{
+        margin-bottom: 10px;
+    }
+    .small{
+        width: 80%;
+        height: 25px;
+        margin: 0 10px;
+    }
+
+</style>
+<script>
+    //        check box : begin ------------------------------------------
+
+
+//    if(start_date != '')
+//    {
+//        $('.check-single').prop('checked', false);
+//        $('#dpd1').val(start_date);
+//        $('#dpd2').val(end_date);
+//        $.each(JSON.parse(fill) ,function(key, index){
+//            $('#'+index).prop('checked', 'checked');
+//        });
+//    }
+    if( $('.check-all').prop('checked') == true)
+        $('.check-single').prop('checked', false);
+    $('.check-all').click(function(){
+        $('.check-single').attr('checked', false);
+    });
+    $('.check-single').click(function(){
+        $('.check-all').attr('checked',false);
+    });
+    //        checkbox: end ----------------------------
+
+</script>
+
+
+
+

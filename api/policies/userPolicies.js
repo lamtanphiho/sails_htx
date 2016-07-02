@@ -9,6 +9,6 @@ module.exports = function(req, res, next) {
 
             })
             .catch(function(err) {console.log(err);
-                return res.json(401, { error: 'token_invalid' });
+                return res.json(401, { error: 'token_invalid', position: 2 });
             })
 };

@@ -23,7 +23,7 @@ module.exports = function(req, res, next) {
     }
   
     tokenService.verify(token, function(err, token) {
-        if (err) return res.json(401, { error: 'token_invalid' });
+        if (err) return res.json(401, { error: 'token_invalid', position: 1 });
 
         req.token = token;
 

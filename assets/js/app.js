@@ -85,14 +85,46 @@ var app = angular
                   'scripts/directives/sidebar/sidebar.js',
                   'scripts/directives/sidebar/sidebar-search/sidebar-search.js',
                   'scripts/controllers/main.js',
-
-                   
-                    
+                  'scripts/service/general.js',
               ]})
           }
         }
         
     })
+      .state('dashboard.xeadd', {
+            url: '/xe/add',
+            templateUrl: 'templates/xe/add.html',
+            controller: 'xeAddCtrl',
+            resolve: {
+                loadMyDirectives: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        {
+                            name: 'htxApp',
+                            files: [
+                                'scripts/controllers/xeAddCtrl.js',
+
+                            ]
+                        })
+                }
+            }
+        }) 
+      .state('dashboard.xe', {
+            url: '/xe',
+            templateUrl: 'templates/xe/index.html',
+            controller: 'xeCtrl',
+            resolve: {
+                loadMyDirectives: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        {
+                            name: 'htxApp',
+                            files: [
+                                'scripts/controllers/xeCtrl.js',
+
+                            ]
+                        })
+                }
+            }
+        })
       .state('dashboard.member', {
             url: '/member/list',
             templateUrl: 'templates/member/Member.html',

@@ -2,9 +2,7 @@
 
   angular
       .module('htxApp')
-      .factory('$General', General);
-
-
+      .factory('$General', General)
   function General(ngDialog) {
     return {
       showMsgNotPermission : function(){
@@ -17,7 +15,28 @@
             className: 'ngdialog-theme-flat ngdialog-theme-custom',
             scope: $scope
           });
-      }
+      },
+      checkRequire : function(arr, fielt){
+            var result = {
+                result: true,
+                key:[]
+            };
+            $.each(arr, function(key, value){
+                if(value == '' && fielt.indexOf(value) >-1){
+                    result.result = false;
+                    result.key.push(key) ;
+                }
+
+            });
+            return result;
+        },
+        validateEmail : function(email) {
+          var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+          return re.test(email);
+        },
+        validatePass : function(pass, pass_confirm){
+            return (pass == pass_confirm);
+        }
     }
 
   }

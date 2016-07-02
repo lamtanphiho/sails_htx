@@ -1,0 +1,261 @@
+
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Quản lý xe</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: bold;color: red;font-size: large;">
+                Thêm xe
+
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    
+                    <div id="taixe" style="border-top: 3px dotted darkgray;padding-top: 20px;margin-top: 20px;">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="bien_so">Biển số<sup class="required">*</sup></label>
+                                    <input type="text" class="form-control" id="bien_so" ng-model="xe.bien_so">
+                                    <div class="ip-error">{{error.bien_so}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="hieu_xe">Hiệu xe<sup class="required">*</sup></label>
+                                    <select ng-model = "xe.hieu_xe" class="form-control" id="hieu_xe">
+                                        <option value="{{hieuxe.hieu_xe}}" ng-repeat="hieuxe in hieuxes">{{hieuxe.hieu_xe}}</option>
+                                    </select>
+                                    <div class="ip-error">{{error.hieu_xe}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="loai_xe">Loại xe<sup class="required">*</sup></label>
+                                    <select ng-model = "xe.loai_xe" class="form-control" id="loai_xe">
+                                        <option value="{{loaixe.loai_xe}}" ng-repeat="loaixe in loaixes">{{loaixe.loai_xe}}</option>
+                                    </select>
+                                    <div class="ip-error">{{error.loai_xe}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="trong_tai">Trọng tải<sup class="required">*</sup></label>
+                                    <select ng-model = "xe.trong_tai" class="form-control" id="trong_tai">
+                                        <option value="{{trongtai.trong_tai}}" ng-repeat="trongtai in trongtais">{{trongtai.trong_tai}}</option>
+                                    </select>
+                                    <div class="ip-error">{{error.trong_tai}}</div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="nuoc_sx">Nước SX<sup class="required">*</sup></label>
+                                    <select ng-model = "xe.nuoc_sx" class="form-control" id="nuoc_sx">
+                                        <option value="{{country.vietname_name}}" ng-repeat="country in countries">{{country.vietname_name}}</option>
+                                    </select>
+                                    <div class="ip-error">{{error.nuoc_sx}}</div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="so_khung">Số khung<sup class="required">*</sup></label>
+                                    <input type="text" class="form-control" id="so_khung" ng-model="xe.so_khung">
+                                    <div class="ip-error">{{error.so_khung}}</div>
+                                </div>
+                            </div> 
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="so_may">Số máy<sup class="required">*</sup></label>
+                                    <input type="text" class="form-control" id="so_may" ng-model="xe.so_may">
+                                    <div class="ip-error">{{error.so_may}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ngay_dang_kiem">Ngày đăng kiểm<sup class="required">*</sup></label>
+                                    <div class='input-group date datetimepicker_1' id='datetimepicker_1'>
+                                        <input type="text" class="form-control" id="ngay_dang_kiem" ng-model="xe.ngay_dang_kiem">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    
+                                    </div>
+                                        <div class="ip-error">{{error.ngay_dk}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ngay_cap_phu_hieu">Ngày cấp phù hiệu<sup class="required">*</sup></label>
+                                    <div class='input-group date datetimepicker_1' id='datetimepicker_1'>
+                                        <input type="text" class="form-control" id="ngay_cap_phu_hieu" ng-model="xe.ngay_cap_phu_hieu">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    
+                                    </div>
+                                        <div class="ip-error">{{error.ngay_cap_phu_hieu}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ngay_cap_bh_dan_su">Ngày cấp bảo hiểm ...<sup class="required">*</sup></label>
+                                    <div class='input-group date datetimepicker_1' id='datetimepicker_1'>
+                                        <input type="text" class="form-control" id="ngay_cap_bh_dan_su" ng-model="xe.ngay_cap_bh_dan_su">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    
+                                    </div>
+                                        <div class="ip-error">{{error.ngay_cap_bh_dan_su}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ngay_het_bh_dan_su">Ngày ngày hết hạn ... dân sự<sup class="required">*</sup></label>
+                                    <div class='input-group date datetimepicker_1' id='datetimepicker_1'>
+                                        <input type="text" class="form-control" id="ngay_het_bh_dan_su" ng-model="xe.ngay_het_bh_dan_su">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    
+                                    </div>
+                                        <div class="ip-error">{{error.ngay_het_bh_dan_su}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ngay_het_dk">Ngày hết hạn đăng kiểm<sup class="required">*</sup></label>
+                                    <div class='input-group date datetimepicker_1' id='datetimepicker_1'>
+                                        <input type="text" class="form-control" id="ngay_het_dk" ng-model="taixe.ngay_het_dk">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    
+                                    </div>
+                                        <div class="ip-error">{{error.ngay_het_dk}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ngay_het_phu_hieu">Ngày hết hạn phù hiệu<sup class="required">*</sup></label>
+                                    <div class='input-group date datetimepicker_1' id='datetimepicker_1'>
+                                        <input type="text" class="form-control" id="ngay_het_phu_hieu" ng-model="xe.ngay_het_phu_hieu">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    
+                                    </div>
+                                        <div class="ip-error">{{error.ngay_het_phu_hieu}}</div>
+                                </div>
+                            </div>
+                           <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="noicap_cnthnv">Thiết bị giám sát hành trình</label>
+                                    <select ng-model = "xe.thiet_bi_gsht" class="form-control" id="thiet_bi_gsht">
+                                         <option value="{{thietbi_gsht.ten_thiet_bi}}" ng-repeat="thietbi_gsht in thietbi_gshts">{{thietbi_gsht.ten_thiet_bi}}</option>
+                                    </select>
+                                    <div class="ip-error">{{error.thiet_bi_gsht}}</div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ngay_dk_gsht">Ngày đăng ký GSHT<sup class="required">*</sup></label>
+                                    <div class='input-group date datetimepicker_1' id='datetimepicker_1'>
+                                        <input type="text" class="form-control" id="ngay_dk_gsht" ng-model="xe.ngay_dk_gsht">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    
+                                    </div>
+                                        <div class="ip-error">{{error.ngay_dk_gsht}}</div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ngay_het_gsht">Ngày hết hạn ĐK GSHT<sup class="required">*</sup></label>
+                                    <div class='input-group date datetimepicker_1' id='datetimepicker_11'>
+                                        <input type="text" class="form-control" id="ngay_het_gsht" ng-model="xe.ngay_het_gsht">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-calendar"></span>
+                                        </span>
+                                    
+                                    </div>
+                                        <div class="ip-error">{{error.ngay_het_gsht}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label for="ghichu">Ghi chú</label>
+                                    <input type="text" class="form-control" id="ghichu" ng-model="taixe.ghichu">
+                                    <div class="ip-error">{{error.ghichu}}</div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div> 
+                    
+                    <div class="row">
+                        <div class="col-md-2 col-md-push-5">
+                            <div class="form-group">
+                                <input ng-click="addXe()"  style="line-height: 8px;" class="form-control btn-success" type="button" value="Submit" id="adduser-submit">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<style>
+    table,.td1{
+        border-left: none !important;
+    }
+    table,.td2{
+        border-right: none !important;
+    }
+    #modal-tran tr{
+        background: #f9f9f9 !important;
+    }
+    #tlb-field{
+        margin-bottom: 10px;
+    }
+    .small{
+        width: 80%;
+        height: 25px;
+        margin: 0 10px;
+    }
+
+</style>
+<script>
+
+</script>
+
+
+
+

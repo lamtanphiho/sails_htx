@@ -36,25 +36,25 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
+                                <label for="role">Confirm password</label>
+                                <input type="password" class="form-control" id="confirm"  ng-model="member.password_confirmation">
+                                <div class="ip-error">{{error.password_confirmation}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
                                 <label for="email">Email<sup class="required">*</sup></label>
                                 <input type="text" class="form-control" id="email"  ng-model="member.email">
                                 <div class="ip-error">{{error.email}}</div>
                             </div>
                         </div>
-                        </div>
-                    <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
                                 <input type="text" class="form-control" id="phone"  ng-model="member.phone" only-digits>
                                 <div class="ip-error">{{error.phone}}</div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="role">Confirm password</label>
-                                <input type="password" class="form-control" id="confirm"  ng-model="member.password_confirmation">
-                                <div class="ip-error">{{error.password_confirmation}}</div>
                             </div>
                         </div>
                         <div class="col-md-4">
@@ -96,7 +96,7 @@
                                 <div class="form-group">
                                     <label for="quoctich">Quốc tịch<sup class="required">*</sup></label>
                                     <select ng-model = "taixe.quoctich" class="form-control" id="quoctich">
-                                        <option value="{{country.id}}" ng-repeat="country in countrys">{{country.vietname_name}}</option>
+                                        <option value="{{country.vietname_name}}" ng-repeat="country in countrys">{{country.vietname_name}}</option>
                                     </select>
                                     <div class="ip-error">{{error.quoctich}}</div>
                                 </div>
@@ -112,7 +112,7 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="cmnd">Số CMND<sup class="required">*</sup></label>
+                                    <label for="cmnd">CMND<sup class="required">*</sup></label>
                                     <input type="text" class="form-control" id="cmnd" ng-model="taixe.cmnd">
                                     <div class="ip-error">{{error.cmnd}}</div>
                                 </div>
@@ -323,7 +323,7 @@
                                 <div class="form-group">
                                     <label for="quoctich">Quốc tịch<sup class="required">*</sup></label>
                                      <select ng-model = "chuxe.quoctich" class="form-control" id="quoctich">
-                                        <option value="{{country.id}}" ng-repeat="country in countrys">{{country.vietname_name}}</option>
+                                        <option value="{{country.vietname_name}}" ng-repeat="country in countrys">{{country.vietname_name}}</option>
                                     </select>
                                     <div class="ip-error">{{error.quoctich}}</div>
                                 </div>
@@ -339,7 +339,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="cmnd">Số CMND<sup class="required">*</sup></label>
+                                    <label for="cmnd">CMND/ Căn cước/ Hộ chiếu<sup class="required">*</sup></label>
                                     <input type="text" class="form-control" id="cmnd" ng-model="chuxe.cmnd">
                                     <div class="ip-error">{{error.cmnd}}</div>
                                 </div>
@@ -347,7 +347,7 @@
 
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="noicap_cmnd">Nơi cấp CMND<sup class="required">*</sup></label>
+                                    <label for="noicap_cmnd">Nơi cấp CMND/ Căn cước/ ...<sup class="required">*</sup></label>
                                      <select ng-model = "chuxe.noicap_cmnd" class="form-control" id="noicap_cmnd">
                                          <option value="{{tinh.id}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
                                     </select>
@@ -356,7 +356,7 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <label for="ngaycap_cmnd-cx">Ngày cấp CMND<sup class="required">*</sup></label>
+                                    <label for="ngaycap_cmnd-cx">Ngày cấp CMND/ .../ Hộ chiếu<sup class="required">*</sup></label>
                                     <div class='input-group date' id='datetimepicker_4'>
                                         <input type="text" class="form-control" id="ngaycap_cmnd-cx" ng-model="chuxe.ngaycap_cmnd">
                                         <span class="input-group-addon">
@@ -368,68 +368,8 @@
                                 </div>
                             </div>
                             </div>
+                        
                         <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="cancuoc">Căn cước</label>
-                                    <input type="text" class="form-control" id="cancuoc" ng-model="chuxe.cancuoc">
-                                    <div class="ip-error">{{error.cancuoc}}</div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="noicap_cancuoc">Nơi cấp Căn cước</label>
-                                     <select ng-model = "chuxe.noicap_cancuoc" class="form-control" id="noicap_cancuoc">
-                                         <option value="{{tinh.id}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
-                                    </select>
-                                    <div class="ip-error">{{error.noicap_cancuoc}}</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="ngaycap_cancuoc">Ngày cấp Căn cước</label>
-                                    <div class='input-group date' id='datetimepicker_7'>
-                                        <input type="text" class="form-control" id="ngaycap_cancuoc" ng-model="chuxe.ngaycap_cancuoc">
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    
-                                    </div>
-                                        <div class="ip-error">{{error.ngaycap_cancuoc}}</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="hochieu">Hộ chiếu</label>
-                                    <input type="text" class="form-control" id="hochieu" ng-model="chuxe.hochieu">
-                                    <div class="ip-error">{{error.hochieu}}</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="noicap_hochieu">Nơi cấp Hộ chiếu</label>
-                                    <select ng-model = "chuxe.noicap_hochieu" class="form-control" id="noicap_hochieu">
-                                         <option value="{{tinh.id}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
-                                    </select>
-                                    <div class="ip-error">{{error.noicap_hochieu}}</div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group">
-                                    <label for="ngaycap_hochieu">Ngày cấp Hộ chiếu</label>
-                                    <div class='input-group date' id='datetimepicker_5'>
-                                        <input type="text" class="form-control" id="ngaycap_hochieu" ng-model="chuxe.ngaycap_hochieu">
-                                        <span class="input-group-addon">
-                                            <span class="glyphicon glyphicon-calendar"></span>
-                                        </span>
-                                    
-                                    </div>
-                                        <div class="ip-error">{{error.ngaycap_hochieu}}</div>
-                                </div>
-                            </div>
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="dt_ban">Điện thoại bàn</label>
@@ -444,8 +384,6 @@
                                     <div class="ip-error">{{error.dtdd}}</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ghichu">Ghi chú</label>
@@ -453,7 +391,6 @@
                                     <div class="ip-error">{{error.ghichu}}</div>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                     <div class="row">
