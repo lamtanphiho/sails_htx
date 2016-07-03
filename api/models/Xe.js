@@ -56,6 +56,16 @@ module.exports = {
   ngay_het_gsht: {
         	type:'date', required: true
         },
+  km_hanh_trinh: {
+            type: 'text'
+        },
+  chu_xe: {
+            type: 'string', required: true
+        },
+  tai_xe: {
+            type: 'string'
+        },
+  
   ghi_chu: {
             type: 'string'
         },

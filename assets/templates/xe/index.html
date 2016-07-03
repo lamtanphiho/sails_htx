@@ -51,6 +51,7 @@
                            <th>Số khung</th>
                           
                            <th>Số máy</th>
+                           <th>Chức năng</th>
                            <th>Chi tiết</th>
 
                        </tr>
@@ -62,9 +63,12 @@
                            <td>{{x.nuoc_sx}}</td>
                            <td>{{x.so_khung}}</td>
                            <td>{{x.so_may}}</td>
-                           
                            <td style="text-align: center" >
-                               <button  ng_click="showDetailmember(mem)"  title="info" type="button" class="btn btn-info btn-circle"><i class="fa fa-list"></i>
+                               <button ng_click="show_km_hanh_trinh(x)" title="km hành trình" type="button" class="btn btn-info btn-circle"><i class="fa fa-road"></i>
+                               </button>
+                           </td>
+                           <td style="text-align: center" >
+                               <button  ng_click="showDetailmember(mem)"  title="chi tiết" type="button" class="btn btn-info btn-circle"><i class="fa fa-list"></i>
                                </button>
                            </td>
 
@@ -80,66 +84,27 @@
     </div>
     <!-- /.col-lg-12 -->
     <!--============================================= model: Edit info =========================-->
-    <div class="modal fade" id="editInfo" role="dialog">
+    <div class="modal fade" id="km_hanh_trinh" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content" style="background: snow">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                    <h4 class="modal-title">Edit info</h4>
+                    <h4 class="modal-title">Km hành trình năm {{year}}</h4>
                 </div>
-                <div class="modal-body row">
-                    <input type="hidden" id="user_id">
-                    <div class="form-group col-md-6">
-                        <label for="pass">New password:</label>
-                        <input type="text" class="form-control" id="pass">
-                        <div class="ip-error">{{error.password}}</div>
-                        <label for="passConfirm">New password confirm:</label>
-                        <input type="text" class="form-control" id="passConfirm">
-                        <div class="ip-error">{{error.password_confirmation}}</div>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="bankName">Bank name:</label>
-                        <select type="text" class="form-control" id="bankName"></select>
-                        <label for="bankAccount">Bank account name:</label>
-                        <input type="text" class="form-control" id="bankAccount">
-                        <label for="bankNo">Bank account no:</label>
-                        <input type="text" class="form-control" id="bankNo">
-                    </div>
+                <div class="modal-body row" id="km_content">
+                    
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="saveEditInfo" class="btn btn-primary" ng_click="saveEditInfo()">Save</button>
+                    <button type="button" id="saveEditInfo" class="btn btn-primary" ng_click="update_km_hanh_trinh()">Save</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
                 </div>
             </div>
 
         </div>
     </div>
-    <!--============================================= model: assign permissions =========================-->
-    <div class="modal fade" id="assignPermission" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content" style="background: snow">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                    <h4 class="modal-title">Assign Permissions</h4>
-                </div>
-                <div class="modal-body">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="assign" class="btn btn-primary" ng_click="assignPermission()">Assign</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-</div>
-<!-- /.row -->
+    
 <style>
     .modal-dialog {
         width: 800px !important;

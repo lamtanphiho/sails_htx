@@ -24,6 +24,8 @@ app
 			thiet_bi_gsht:"",
 			trong_tai:""
 		}
+        var user = JSON.parse(localStorage.getItem('userHtx'));
+        $scope.xe.chu_xe = user.username;
 		$scope.error = {};
         $scope.getThietBi_GSHT();
         $scope.getTrongtai();
