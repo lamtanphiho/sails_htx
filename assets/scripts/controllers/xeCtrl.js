@@ -104,6 +104,7 @@ app
     $scope.show_km_hanh_trinh = function(xe){
         var today       = new Date();
         $scope.year     = today.getFullYear();
+        $scope.currentXe= xe.bien_so;
         var month       = today.getMonth() + 1;
         var numDate     = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
         var disable     = '';
