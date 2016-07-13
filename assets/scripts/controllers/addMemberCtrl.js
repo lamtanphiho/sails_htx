@@ -84,54 +84,54 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
          $('#datetimepicker_1').datetimepicker({
                     defaultDate: currentDate,
                     
-                    format: 'YYYY-MM-DD'
+                    format: 'DD-MM-YYYY'
                 });
          $('#datetimepicker_2').datetimepicker({
                     defaultDate: currentDate,
                     
-                    format: 'YYYY-MM-DD'
+                    format: 'DD-MM-YYYY'
                 });
          $('#datetimepicker_3').datetimepicker({
                     defaultDate: currentDate,
                     
-                    format: 'YYYY-MM-DD'
+                    format: 'DD-MM-YYYY'
                 });
          $('#datetimepicker_4').datetimepicker({
                     defaultDate: currentDate,
                     
-                    format: 'YYYY-MM-DD'
+                    format: 'DD-MM-YYYY'
                 });
          
          $('#datetimepicker_6').datetimepicker({
                     defaultDate: currentDate,
                     
-                    format: 'YYYY-MM-DD'
+                    format: 'DD-MM-YYYY'
                 });
          
          $('#datetimepicker_8').datetimepicker({
                     defaultDate: currentDate,
                     
-                    format: 'YYYY-MM-DD'
+                    format: 'DD-MM-YYYY'
                 }); 
         $('#datetimepicker_9').datetimepicker({
             defaultDate: currentDate,
             
-            format: 'YYYY-MM-DD'
+            format: 'DD-MM-YYYY'
         }); 
         $('#datetimepicker_10').datetimepicker({
             defaultDate: currentDate,
             
-            format: 'YYYY-MM-DD'
+            format: 'DD-MM-YYYY'
         }); 
         $('#datetimepicker_11').datetimepicker({
             defaultDate: currentDate,
             
-            format: 'YYYY-MM-DD'
+            format: 'DD-MM-YYYY'
         }); 
         $('#datetimepicker_12').datetimepicker({
             defaultDate: currentDate,
             
-            format: 'YYYY-MM-DD'
+            format: 'DD-MM-YYYY'
         });
 
         $scope.getCountrys();

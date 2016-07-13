@@ -9,7 +9,20 @@
 app
   .controller('xeCtrl', function($scope, $http) {
      $scope.init = function() {
-        
+        $scope.km = {
+            1:0,
+            2:0,
+            3:0,
+            4:0,
+            5:0,
+            6:0,
+            7:0,
+            8:0,
+            9:0,
+            10:0,
+            11:0,
+            12:0
+        }
         $http({
             url: 'xe/list-xe',
             method: "GET"
@@ -102,16 +115,24 @@ app
         });
     }
     $scope.show_bao_duong = function(xe){
+        
         var today       = new Date();
         $scope.year     = today.getFullYear();
+        var month       = today.getMonth() + 1;
         $scope.currentXe= xe.bien_so;
         var km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
-        console.log(km_hanh_trinh);
         $.each(km_hanh_trinh, function(key, index){
-            if(index.year == $scope.year){
+            if(index.year == $scope.year && index.month <= month){
+                $.each(index.info, function(k, v){
+                    $scope.km[index.month] += v.km*1;
+                })
                 
             }
         })
+        // $.each(km, function(ke, va){
+        //     $('#km-'+ke).html(va);
+        // })
+        console.log($scope.km);
         $('#bao_duong').modal();
     }
     $scope.show_km_hanh_trinh = function(xe){

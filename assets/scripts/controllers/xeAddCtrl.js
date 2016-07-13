@@ -10,7 +10,7 @@ app
          $('.datetimepicker_1').datetimepicker({
                     defaultDate: currentDate,
                     
-                    format: 'YYYY-MM-DD'
+                    format: 'DD-MM-YYYY'
                 });
          
 // ====================================================================================
