@@ -9,7 +9,10 @@ module.exports = {
 
   attributes: {
   	id:{
-    	type:'integer', required: true, unique: true, primaryKey: true
+        type:'integer', required: true, primaryKey: true
+    }, 
+    bien_so:{
+    	type:'string', required: true
     }, 
     km_xe_chay_trong_thang:{
     	type:'text', required: true

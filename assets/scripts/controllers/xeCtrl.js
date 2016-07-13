@@ -9,20 +9,9 @@
 app
   .controller('xeCtrl', function($scope, $http) {
      $scope.init = function() {
-        $scope.km = {
-            1:0,
-            2:0,
-            3:0,
-            4:0,
-            5:0,
-            6:0,
-            7:0,
-            8:0,
-            9:0,
-            10:0,
-            11:0,
-            12:0
-        }
+        var today       = new Date();
+        $scope.year     = today.getFullYear();
+        $scope.month       = today.getMonth() + 1;
         $http({
             url: 'xe/list-xe',
             method: "GET"
@@ -114,25 +103,97 @@ app
             console.log(response.error);
         });
     }
+    $scope.update_bao_duong = function(){
+        var bao_duong = {
+            id: $scope.year,
+            bien_so: $scope.currentXe,
+            km_xe_chay_trong_thang: $scope.km,
+            km_xe_chay_luy_ke: $scope.kmlk,
+            so_chuyen_trong_thang: $scope.sctt,
+            so_chuyen_xe_luy_ke: $scope.sclk,
+            noi_dung: $scope.ndbd,
+            thoi_gian: $scope.tgbd,
+            dia_diem: $scope.ddbd,
+        }
+        console.log(bao_duong);
+    }
     $scope.show_bao_duong = function(xe){
+        $scope.km = {
+            1:0,
+            2:0,
+            3:0,
+            4:0,
+            5:0,
+            6:0,
+            7:0,
+            8:0,
+            9:0,
+            10:0,
+            11:0,
+            12:0
+        }
+        $scope.kmlk = {
+            1:0,
+            2:0,
+            3:0,
+            4:0,
+            5:0,
+            6:0,
+            7:0,
+            8:0,
+            9:0,
+            10:0,
+            11:0,
+            12:0
+        }
+        $scope.sctt = {
+            1:0,
+            2:0,
+            3:0,
+            4:0,
+            5:0,
+            6:0,
+            7:0,
+            8:0,
+            9:0,
+            10:0,
+            11:0,
+            12:0
+        }
+        $scope.sclk = {
+            1:0,
+            2:0,
+            3:0,
+            4:0,
+            5:0,
+            6:0,
+            7:0,
+            8:0,
+            9:0,
+            10:0,
+            11:0,
+            12:0
+        }
         
-        var today       = new Date();
-        $scope.year     = today.getFullYear();
-        var month       = today.getMonth() + 1;
+        
         $scope.currentXe= xe.bien_so;
         var km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
         $.each(km_hanh_trinh, function(key, index){
-            if(index.year == $scope.year && index.month <= month){
+            if(index.year == $scope.year && index.month <= $scope.month){
                 $.each(index.info, function(k, v){
                     $scope.km[index.month] += v.km*1;
                 })
                 
             }
         })
-        // $.each(km, function(ke, va){
-        //     $('#km-'+ke).html(va);
-        // })
-        console.log($scope.km);
+        $.each($scope.km, function(ke, va){
+            if(ke > $scope.month){
+                $('#kmlk-'+ke).attr('disabled', 'disabled');
+                $('#sctt-'+ke).attr('disabled', 'disabled');
+                $('#sclk-'+ke).attr('disabled', 'disabled');
+            }
+        })
+        // console.log($scope.km);
         $('#bao_duong').modal();
     }
     $scope.show_km_hanh_trinh = function(xe){
