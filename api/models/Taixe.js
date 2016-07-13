@@ -36,7 +36,7 @@ module.exports = {
         	type:'string', required: true
         },
         hang:{
-        	type:'integer', required: true
+        	type:'string', required: true
         },
         loaixe_duoclai:{
         	type:'string', required: true
@@ -48,7 +48,7 @@ module.exports = {
         	type:'datetime', required: true
         },
         noicap_gplx:{
-        	type:'integer', required: true
+        	type:'string', required: true
         }, 
         so_cnthnv:{
         	type:'string', required: true
@@ -60,7 +60,7 @@ module.exports = {
         	type:'datetime', required: true
         }, 
         noicap_cnthnv:{
-        	type:'integer', required: true
+        	type:'string', required: true
         }, 
         ngaykham_suckhoe:{
         	type:'datetime', required: true

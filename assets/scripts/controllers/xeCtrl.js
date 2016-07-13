@@ -15,7 +15,7 @@ app
             method: "GET"
         }).success(function (data) {
             $scope.xe = data;
-            console.log(data)
+            // console.log(data)
         }).error(function (response) {
             console.log(response.error);
             if (response.error == 'token_not_provided')
@@ -101,6 +101,19 @@ app
             console.log(response.error);
         });
     }
+    $scope.show_bao_duong = function(xe){
+        var today       = new Date();
+        $scope.year     = today.getFullYear();
+        $scope.currentXe= xe.bien_so;
+        var km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
+        console.log(km_hanh_trinh);
+        $.each(km_hanh_trinh, function(key, index){
+            if(index.year == $scope.year){
+                
+            }
+        })
+        $('#bao_duong').modal();
+    }
     $scope.show_km_hanh_trinh = function(xe){
         var today       = new Date();
         $scope.year     = today.getFullYear();
@@ -137,13 +150,6 @@ app
                     })
                 }
             })
-            // if(newYear){
-            //     for(var i = 1; i<= numDate; i++){
-            //         if(i > day)
-            //             disable = 'disabled';
-            //         html += '<div class="form-group col-md-2"><input type="text" class="form-control" id="day-'+i+'" placeholder="Ngày '+i+'" '+disable+'></div>';
-            //     }
-            // }
         }
         html += '</div>';
         $('#km_content').html(html);

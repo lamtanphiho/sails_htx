@@ -199,7 +199,7 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
         var listRequireChuxe ='ngaysinh donvi chu_dautu quoctich hktt cmnd noicap_cmnd ngaycap_cmnd dtdd';
         
         var listRequireTaixe = 'fullname date_born quoctich cmnd noicap_cmnd ngaycap_cmnd so_giayphep_laixe hang loaixe_duoclai ngay_gplx ngayhet_gplx noicap_gplx so_cnthnv ngay_cnthnv ngayhet_cnthnv noicap_cnthnv ngaykham_suckhoe ngayhet_suckhoe';
-         var check = false;   
+         var check = {};   
         $scope.chuxe.ngaysinh           = $('#ngaysinh').val();
         $scope.chuxe.ngaycap_cmnd       = $('#ngaycap_cmnd-cx').val();
         // ------------------------------------------------------------------------------
@@ -223,19 +223,19 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
 
             }
             if($scope.member.role == 'agent'){
-                check = $General.checkRequire($scope.chuxe, listRequireChuxe).result;
+                check = $General.checkRequire($scope.chuxe, listRequireChuxe);
                 
             }else{
-                check = $General.checkRequire($scope.taixe, listRequireTaixe).result;
+                check = $General.checkRequire($scope.taixe, listRequireTaixe);
 
             }
-
-        }else{
-            $.each(check.key, function(key, index){
-                $scope.error[index] = 'Vui lòng nhập '+ index;
-            });
+            if(! check.result){
+                $.each(check.key, function(key, index){
+                    $scope.error[index] = 'Vui lòng nhập '+ index;
+                });
+            }
         }
-        if(check == true){
+        if(check.result == true){
             var req = {
                 method: 'POST',
                 url: 'users/create',
@@ -278,7 +278,7 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
                 })
             });
         }else
-        console.log($scope.taixe);
+        console.log(check);
         
     }
 

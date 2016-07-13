@@ -21,7 +21,7 @@ module.exports = {
             type: 'datetime', required: true
         },
         quoctich: {
-            type: 'integer', required: true
+            type: 'string', required: true
         },
         hktt:{
         	type:'string', required: true

@@ -122,7 +122,7 @@
                                 <div class="form-group">
                                     <label for="noicap_cmnd">Nơi cấp CMND<sup class="required">*</sup></label>
                                      <select ng-model = "taixe.noicap_cmnd" class="form-control" id="noicap_cmnd">
-                                        <option value="{{tinh.id}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
+                                        <option value="{{tinh.name}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
                                     </select>
                                     <div class="ip-error">{{error.noicap_gplx}}</div>
                                 </div>
@@ -154,7 +154,7 @@
                                 <div class="form-group">
                                     <label for="hang">Hạng</label>
                                     <select ng-model = "taixe.hang" class="form-control" id="hang">
-                                        <option  value="{{han.id}}"" ng-repeat="han in banglais">{{han.hang}}</option>
+                                        <option  value="{{han.hang}}"" ng-repeat="han in banglais">{{han.hang}}</option>
                                     </select>
                                     <div class="ip-error">{{error.hang}}</div>
 
@@ -200,7 +200,7 @@
                                 <div class="form-group">
                                     <label for="noicap_gplx">Nơi cấp GPLX</label>
                                     <select ng-model = "taixe.noicap_gplx" class="form-control" id="noicap_gplx">
-                                        <option value="{{tinh.id}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
+                                        <option value="{{tinh.name}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
                                     </select>
                                     <div class="ip-error">{{error.noicap_gplx}}</div>
                                 </div>
@@ -245,7 +245,7 @@
                                 <div class="form-group">
                                     <label for="noicap_cnthnv">Nơi cấp CNTHNV</label>
                                     <select ng-model = "taixe.noicap_cnthnv" class="form-control" id="noicap_cnthnv">
-                                         <option value="{{tinh.id}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
+                                         <option value="{{tinh.name}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
                                     </select>
                                     <div class="ip-error">{{error.noicap_cnthnv}}</div>
 
@@ -349,7 +349,7 @@
                                 <div class="form-group">
                                     <label for="noicap_cmnd">Nơi cấp CMND/ Căn cước/ ...<sup class="required">*</sup></label>
                                      <select ng-model = "chuxe.noicap_cmnd" class="form-control" id="noicap_cmnd">
-                                         <option value="{{tinh.id}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
+                                         <option value="{{tinh.name}}" ng-repeat="tinh in tinhs">{{tinh.name}}</option>
                                     </select>
                                     <div class="ip-error">{{error.noicap_cmnd}}</div>
                                 </div>
