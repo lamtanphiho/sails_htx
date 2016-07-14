@@ -47,14 +47,14 @@ app
     }
     $scope.addXe = function(){
     	var listRequire 				= 'bien_so hieu_xe	loai_xe	nuoc_sx	so_khung so_may	thiet_bi_gsht trong_tai';
-    	$scope.xe.ngay_dang_kiem        = $('#ngay_dang_kiem').val();
-        $scope.xe.ngay_cap_phu_hieu 	= $('#ngay_cap_phu_hieu').val();
-        $scope.xe.ngay_cap_bh_dan_su    = $('#ngay_cap_bh_dan_su').val();
-        $scope.xe.ngay_het_bh_dan_su    = $('#ngay_het_bh_dan_su').val();
-        $scope.xe.ngay_het_dk        	= $('#ngay_het_dk').val();
-        $scope.xe.ngay_het_phu_hieu     = $('#ngay_het_phu_hieu').val();
-        $scope.xe.ngay_dk_gsht   		= $('#ngay_dk_gsht').val();
-        $scope.xe.ngay_het_gsht    		= $('#ngay_het_gsht').val();
+    	$scope.xe.ngay_dang_kiem        = $General.formatDate($('#ngay_dang_kiem').val(), 'yyyy-MM-dd');
+        $scope.xe.ngay_cap_phu_hieu 	= $General.formatDate($('#ngay_cap_phu_hieu').val(), 'yyyy-MM-dd');
+        $scope.xe.ngay_cap_bh_dan_su    = $General.formatDate($('#ngay_cap_bh_dan_su').val(), 'yyyy-MM-dd');
+        $scope.xe.ngay_het_bh_dan_su    = $General.formatDate($('#ngay_het_bh_dan_su').val(), 'yyyy-MM-dd');
+        $scope.xe.ngay_het_dk        	= $General.formatDate($('#ngay_het_dk').val(), 'yyyy-MM-dd');
+        $scope.xe.ngay_het_phu_hieu     = $General.formatDate($('#ngay_het_phu_hieu').val(), 'yyyy-MM-dd');
+        $scope.xe.ngay_dk_gsht   		= $General.formatDate($('#ngay_dk_gsht').val(), 'yyyy-MM-dd');
+        $scope.xe.ngay_het_gsht    		= $General.formatDate($('#ngay_het_gsht').val(), 'yyyy-MM-dd');
         var check = $General.checkRequire($scope.xe, listRequire);
 		$scope.errorReset();
 

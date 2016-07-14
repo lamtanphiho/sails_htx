@@ -12,7 +12,7 @@ module.exports = {
             type: 'string', required: true, unique: true, alphanumericdashed: true
         },
         date_born: { 
-             type: 'datetime', required: true
+             type: 'date', required: true
         },
         quoctich: {
             type: 'string', required: true
@@ -30,7 +30,7 @@ module.exports = {
         	type:'string', required: true
         },
         ngaycap_cmnd:{
-        	type:'datetime', required: true
+        	type:'date', required: true
         },
         so_giayphep_laixe:{
         	type:'string', required: true
@@ -42,10 +42,10 @@ module.exports = {
         	type:'string', required: true
         },
         ngay_gplx:{
-        	type:'datetime', required: true
+        	type:'date', required: true
         },
         ngayhet_gplx:{
-        	type:'datetime', required: true
+        	type:'date', required: true
         },
         noicap_gplx:{
         	type:'string', required: true
@@ -54,19 +54,19 @@ module.exports = {
         	type:'string', required: true
         }, 
         ngay_cnthnv:{
-        	type:'datetime', required: true
+        	type:'date', required: true
         }, 
         ngayhet_cnthnv:{
-        	type:'datetime', required: true
+        	type:'date', required: true
         }, 
         noicap_cnthnv:{
         	type:'string', required: true
         }, 
         ngaykham_suckhoe:{
-        	type:'datetime', required: true
+        	type:'date', required: true
         }, 
         ngayhet_suckhoe:{
-        	type:'datetime', required: true
+        	type:'date', required: true
         }, 
         ghichu:{
         	type:'text'

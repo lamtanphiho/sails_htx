@@ -200,17 +200,17 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
         
         var listRequireTaixe = 'fullname date_born quoctich cmnd noicap_cmnd ngaycap_cmnd so_giayphep_laixe hang loaixe_duoclai ngay_gplx ngayhet_gplx noicap_gplx so_cnthnv ngay_cnthnv ngayhet_cnthnv noicap_cnthnv ngaykham_suckhoe ngayhet_suckhoe';
          var check = {};   
-        $scope.chuxe.ngaysinh           = $('#ngaysinh').val();
-        $scope.chuxe.ngaycap_cmnd       = $('#ngaycap_cmnd-cx').val();
+        $scope.chuxe.ngaysinh           = $General.formatDate($('#ngaysinh').val(), 'yyyy-MM-dd');//console.log($scope.chuxe);return;
+        $scope.chuxe.ngaycap_cmnd       = $General.formatDate($('#ngaycap_cmnd-cx').val(), 'yyyy-MM-dd');
         // ------------------------------------------------------------------------------
-        $scope.taixe.date_born          = $('#date_born').val();
-        $scope.taixe.ngaycap_cmnd       = $('#ngaycap_cmnd').val();
-        $scope.taixe.ngay_gplx          = $('#ngay_gplx').val();
-        $scope.taixe.ngayhet_gplx       = $('#ngayhet_gplx').val();
-        $scope.taixe.ngay_cnthnv        = $('#ngay_cnthnv').val();
-        $scope.taixe.ngayhet_cnthnv     = $('#ngayhet_cnthnv').val();
-        $scope.taixe.ngaykham_suckhoe   = $('#ngaykham_suckhoe').val();
-        $scope.taixe.ngayhet_suckhoe    = $('#ngayhet_suckhoe').val();
+        $scope.taixe.date_born          = $General.formatDate($('#date_born').val(), 'yyyy-MM-dd');
+        $scope.taixe.ngaycap_cmnd       = $General.formatDate($('#ngaycap_cmnd').val(), 'yyyy-MM-dd');
+        $scope.taixe.ngay_gplx          = $General.formatDate($('#ngay_gplx').val(), 'yyyy-MM-dd');
+        $scope.taixe.ngayhet_gplx       = $General.formatDate($('#ngayhet_gplx').val(), 'yyyy-MM-dd');
+        $scope.taixe.ngay_cnthnv        = $General.formatDate($('#ngay_cnthnv').val(), 'yyyy-MM-dd');
+        $scope.taixe.ngayhet_cnthnv     = $General.formatDate($('#ngayhet_cnthnv').val(), 'yyyy-MM-dd');
+        $scope.taixe.ngaykham_suckhoe   = $General.formatDate($('#ngaykham_suckhoe').val(), 'yyyy-MM-dd');
+        $scope.taixe.ngayhet_suckhoe    = $General.formatDate($('#ngayhet_suckhoe').val(), 'yyyy-MM-dd');
        
         $scope.reset();
         var checkRequire = $General.checkRequire($scope.member, listRequireUser);
@@ -261,6 +261,7 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
                         className: 'ngdialog-theme-flat ngdialog-theme-custom',
                         scope: $scope
                     });
+                    $state.go('dashboard.member');
                  }, function(error) {
 
                     angular.forEach(error.data.Errors, function(value, key) {

@@ -29,6 +29,9 @@ module.exports = {
   so_may: {
             type: 'string', required: true
         },
+  nam_sx: {
+            type: 'string', required: true
+        },
   ngay_dang_kiem:{
         	type:'date', required: true
         },

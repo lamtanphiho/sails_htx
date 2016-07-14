@@ -16,7 +16,14 @@
             scope: $scope
           });
       },
-      checkRequire : function(arr, fielt){
+      formatDate : function(date, format){
+            var split = date.split('-');
+            if(format == 'yyyy-MM-dd'){
+              return split[2]+'-'+split[1]+'-'+split[0];
+            }
+            
+        },
+        checkRequire : function(arr, fielt){
             var result = {
                 result: true,
                 key:[]

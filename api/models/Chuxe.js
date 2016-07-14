@@ -18,7 +18,7 @@ module.exports = {
             type: 'string', required: true
         },
         ngaysinh: {
-            type: 'datetime', required: true
+            type: 'date', required: true
         },
         quoctich: {
             type: 'string', required: true
@@ -33,13 +33,13 @@ module.exports = {
         	type:'string'
         },
         ngaycap_cmnd:{
-        	type:'datetime'
+        	type:'date'
         },
         cancuoc:{
         	type:'string'
         },
         ngaycap_cancuoc:{
-        	type:'datetime'
+        	type:'date'
         },
         noicap_cancuoc:{
         	type:'string'
@@ -48,7 +48,7 @@ module.exports = {
         	type:'string'
         },
         ngaycap_hochieu:{
-        	type:'datetime'
+        	type:'date'
         },
         noicap_hochieu:{
         	type:'string'

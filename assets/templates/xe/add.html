@@ -85,6 +85,15 @@
                             </div>
                             <div class="col-md-3">
                                 <div class="form-group">
+                                    <label for="nam_sx">Năm sản xuất<sup class="required">*</sup></label>
+                                    <input type="text" class="form-control" id="nam_sx" ng-model="xe.nam_sx">
+                                    <div class="ip-error">{{error.nam_sx}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="form-group">
                                     <label for="ngay_dang_kiem">Ngày đăng kiểm<sup class="required">*</sup></label>
                                     <div class='input-group date datetimepicker_1' id='datetimepicker_1'>
                                         <input type="text" class="form-control" id="ngay_dang_kiem" ng-model="xe.ngay_dang_kiem">
@@ -96,8 +105,6 @@
                                         <div class="ip-error">{{error.ngay_dk}}</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngay_cap_phu_hieu">Ngày cấp phù hiệu<sup class="required">*</sup></label>
@@ -137,6 +144,8 @@
                                         <div class="ip-error">{{error.ngay_het_bh_dan_su}}</div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngay_het_dk">Ngày hết hạn đăng kiểm<sup class="required">*</sup></label>
@@ -150,8 +159,6 @@
                                         <div class="ip-error">{{error.ngay_het_dk}}</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngay_het_phu_hieu">Ngày hết hạn phù hiệu<sup class="required">*</sup></label>
@@ -188,6 +195,8 @@
                                         <div class="ip-error">{{error.ngay_dk_gsht}}</div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ngay_het_gsht">Ngày hết hạn ĐK GSHT<sup class="required">*</sup></label>
@@ -201,8 +210,6 @@
                                         <div class="ip-error">{{error.ngay_het_gsht}}</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
                                     <label for="ghichu">Ghi chú</label>
