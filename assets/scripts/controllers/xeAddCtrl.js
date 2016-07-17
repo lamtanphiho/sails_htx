@@ -1,7 +1,7 @@
 'use strict';
 
 app
-  .controller('xeAddCtrl', function($scope, $http, $General, ngDialog) {
+  .controller('xeAddCtrl', function($scope, $http, $General, ngDialog, $state, $rootScope) {
     $scope.init = function() {
         var date = new Date();
         
@@ -67,14 +67,16 @@ app
                 $http(req)
                 .then(function(response) {
                     // console.log(response);
-                    $scope.message = 'Tạo xe thành công !!!';
+                    $rootScope.message = 'Tạo xe thành công !!!';
                     ngDialog.open({
 
                         // Config dialog
                         template: 'templates/dialog/popupSuccess.html',
                         className: 'ngdialog-theme-flat ngdialog-theme-custom',
-                        scope: $scope
-                    });
+                        scope: $rootScope
+                    })
+                    
+                    $state.go('dashboard.xe');
                  }, function(error) {
 
                     angular.forEach(error.data.Errors, function(value, key) {

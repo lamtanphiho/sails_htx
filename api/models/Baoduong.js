@@ -6,10 +6,10 @@
  */
 
 module.exports = {
-
+    schema: true,
   attributes: {
-  	id:{
-        type:'integer', required: true, primaryKey: true
+  	year:{
+        type:'integer', required: true
     }, 
     bien_so:{
     	type:'string', required: true
@@ -36,6 +36,6 @@ module.exports = {
     	type:'text', required: true
     }, 
     
-  }
+    }
 };
 

@@ -41,7 +41,8 @@ module.exports.routes = {
    'GET /xe/list-xe': 'XeController.getXe',
   // users =========================================
   
-
+  'POST /baoduong/byyear': 'BaoduongController.get_baoduong_by_year',
+  'POST /baoduong/updateOrCreate': 'BaoduongController.updateOrCreate',
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *

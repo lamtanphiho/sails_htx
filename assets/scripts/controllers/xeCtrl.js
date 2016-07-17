@@ -105,19 +105,37 @@ app
     }
     $scope.update_bao_duong = function(){
         var bao_duong = {
-            id: $scope.year,
+            year: $scope.year,
             bien_so: $scope.currentXe,
-            km_xe_chay_trong_thang: $scope.km,
-            km_xe_chay_luy_ke: $scope.kmlk,
-            so_chuyen_trong_thang: $scope.sctt,
-            so_chuyen_xe_luy_ke: $scope.sclk,
-            noi_dung: $scope.ndbd,
-            thoi_gian: $scope.tgbd,
-            dia_diem: $scope.ddbd,
+            km_xe_chay_trong_thang: btoa(JSON.stringify($scope.km)),
+            km_xe_chay_luy_ke: btoa(JSON.stringify($scope.kmlk)),
+            so_chuyen_trong_thang: btoa(JSON.stringify($scope.sctt)),
+            so_chuyen_xe_luy_ke: btoa(JSON.stringify($scope.sclk)),
+            noi_dung: btoa(JSON.stringify($scope.ndbd)),
+            thoi_gian: btoa(JSON.stringify($scope.tgbd)),
+            dia_diem: btoa(JSON.stringify($scope.ddbd)),
         }
         console.log(bao_duong);
+
+        $http({
+            method: 'POST',
+            url: 'baoduong/updateOrCreate',
+            data:bao_duong
+        }).success(function (data) {
+            console.log(data);
+            $('#bao_duong').modal('hide');
+            $http({
+                url: 'xe/list-xe',
+                method: "GET"
+            }).success(function (data) {
+                $scope.xe = data;
+            })
+        }).error(function (response) {
+            console.log(response.error);
+        });
     }
     $scope.show_bao_duong = function(xe){
+
         $scope.km = {
             1:0,
             2:0,
@@ -173,10 +191,71 @@ app
             10:0,
             11:0,
             12:0
+        } 
+        $scope.tgbd = {
+            1:0,
+            2:0,
+            3:0,
+            4:0,
+            5:0,
+            6:0,
+            7:0,
+            8:0,
+            9:0,
+            10:0,
+            11:0,
+            12:0
+        }
+        $scope.ddbd = {
+            1:'',
+            2:'',
+            3:'',
+            4:'',
+            5:'',
+            6:'',
+            7:'',
+            8:'',
+            9:'',
+            10:'',
+            11:'',
+            12:''
+        }
+        $scope.ndbd = {
+            1:'',
+            2:'',
+            3:'',
+            4:'',
+            5:'',
+            6:'',
+            7:'',
+            8:'',
+            9:'',
+            10:'',
+            11:'',
+            12:''
         }
         
         
         $scope.currentXe= xe.bien_so;
+         $http({
+            method: 'POST',
+            url: 'baoduong/byyear',
+            data: {year: $scope.year, bien_so: $scope.currentXe}
+            
+        }).success(function (data) {
+            if(typeof(data.year) != 'undefined'){
+                $scope.kmlk = JSON.parse(atob(data.km_xe_chay_luy_ke));
+                $scope.sctt = JSON.parse(atob(data.so_chuyen_trong_thang));
+                $scope.sclk = JSON.parse(atob(data.so_chuyen_xe_luy_ke));
+                $scope.tgbd = JSON.parse(atob(data.thoi_gian));
+                $scope.ddbd = JSON.parse(atob(data.dia_diem));
+                $scope.ndbd = JSON.parse(atob(data.noi_dung));
+            // console.log( $scope.kmlk);
+            }
+        }).error(function (response) {
+            console.log(response.error);
+        });
+        // return;
         var km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
         $.each(km_hanh_trinh, function(key, index){
             if(index.year == $scope.year && index.month <= $scope.month){
