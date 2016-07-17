@@ -9,7 +9,7 @@ module.exports = {
 
   attributes: {
 	bien_so: {
-            type: 'string', required: true
+            type: 'string', required: true, unique: true,
         },
   hieu_xe: {
             type: 'string', required: true
@@ -72,6 +72,18 @@ module.exports = {
   ghi_chu: {
             type: 'string'
         },
-  }
+  },
+   /**
+     * Model validation messages definitions
+     */
+    validationMessages: {
+        
+        bien_so: {
+            required: 'Bien so is required',
+            // phone: 'Phone does not match format',
+            unique: 'Bien so is already taken',
+        }
+    },
+
 };
 
