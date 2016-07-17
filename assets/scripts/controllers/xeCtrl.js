@@ -7,7 +7,7 @@
  * Controller of the htxApp
  */
 app
-  .controller('xeCtrl', function($scope, $http) {
+  .controller('xeCtrl', function($scope, $http, $General ,$timeout, Excel) {
      $scope.init = function() {
         var today       = new Date();
         $scope.year     = today.getFullYear();
@@ -24,6 +24,10 @@ app
                 $state.go('login');
         });
     };
+    $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+            $scope.exportHref= Excel.tableToExcel(tableId,'sheet name');
+            $timeout(function(){location.href=$scope.exportHref;},100); // trigger download
+        }
     $scope.update_km_hanh_trinh = function(){
         var today       = new Date();
         var year     = today.getFullYear();

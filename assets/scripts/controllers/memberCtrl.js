@@ -1,7 +1,7 @@
 /**
  * Created by lamtanphiho on 3/30/2016.
  */
-app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope, ngDialog) {
+app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope, ngDialog ,$timeout, Excel) {
     $scope.init = function() {
         $scope.child = '';
         $http({
@@ -16,6 +16,10 @@ app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope,
                 $state.go('login');
         });
     }
+    $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+            $scope.exportHref= Excel.tableToExcel(tableId,'sheet name');
+            $timeout(function(){location.href=$scope.exportHref;},100); // trigger download
+        }
     $scope.reset = function () {
         $scope.error = {
             old_password : '',

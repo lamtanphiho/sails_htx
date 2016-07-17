@@ -28,7 +28,11 @@
                 <td>
                         <a ui-sref="dashboard.xeadd" class="form-control btn btn-success">Thêm</a>
                 </td>
-
+                <td>
+                  <button class="btn btn-link" ng-click="exportToExcel('#list-xe')" style="margin-left: 20px;">
+                      <span class="glyphicon glyphicon-share"></span> Export to Excel
+                  </button>
+                </td>
             </tr>
         </table>
     </div>
@@ -40,7 +44,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="dataTable_wrapper">
-                   <table class="table table-striped table-bordered table-hover">
+                   <table class="table table-striped table-bordered table-hover" id="list-xe">
                        <tr>
                            <th>Biển số</th>
                            <th>Hiệu xe</th>

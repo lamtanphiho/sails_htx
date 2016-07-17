@@ -28,7 +28,11 @@
                 <td>
                         <a ui-sref="dashboard.memberadd" class="form-control btn btn-success">Thêm</a>
                 </td>
-
+                <td>
+                  <button class="btn btn-link" ng-click="exportToExcel('#list-user')" style="margin-left: 20px;">
+                      <span class="glyphicon glyphicon-share"></span> Export to Excel
+                  </button>
+                </td>
             </tr>
         </table>
     </div>
@@ -41,7 +45,7 @@
             <!-- /.panel-heading -->
             <div class="panel-body">
                 <div class="dataTable_wrapper">
-                   <table class="table table-striped table-bordered table-hover">
+                   <table class="table table-striped table-bordered table-hover" id="list-user">
                        <tr>
                            <th>Tên đăng nhập</th>
                            <th>Họ tên</th>
