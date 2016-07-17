@@ -13,6 +13,9 @@ module.exports = {
     }, 
     ghichu:{
     	type:'string'
+    }, 
+    sort:{
+    	type:'integer'
     }
   }
 };

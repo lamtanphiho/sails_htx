@@ -270,6 +270,9 @@ app
                 $('#kmlk-'+ke).attr('disabled', 'disabled');
                 $('#sctt-'+ke).attr('disabled', 'disabled');
                 $('#sclk-'+ke).attr('disabled', 'disabled');
+                $('#ndbd-'+ke).attr('disabled', 'disabled');
+                $('#tgbd-'+ke).attr('disabled', 'disabled');
+                $('#ddbd-'+ke).attr('disabled', 'disabled');
             }
         })
         // console.log($scope.km);
