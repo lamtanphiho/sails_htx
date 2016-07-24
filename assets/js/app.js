@@ -91,7 +91,75 @@ var app = angular
         }
         
     })
-      .state('dashboard.country', {
+      .state('dashboard.loaixe', {
+            url: '/loai-xe',
+            templateUrl: 'templates/config/loaixe.html',
+            controller: 'loaixeCtrl',
+            resolve: {
+                loadMyDirectives: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        {
+                            name: 'htxApp',
+                            files: [
+                                'scripts/controllers/loaixeCtrl.js',
+
+                            ]
+                        })
+                }
+            }
+        }) 
+         .state('dashboard.hieuxe', {
+            url: '/hieu-xe',
+            templateUrl: 'templates/config/hieuxe.html',
+            controller: 'hieuxeCtrl',
+            resolve: {
+                loadMyDirectives: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        {
+                            name: 'htxApp',
+                            files: [
+                                'scripts/controllers/hieuxeCtrl.js',
+
+                            ]
+                        })
+                }
+            }
+        }) 
+      .state('dashboard.banglai', {
+            url: '/bang-lai',
+            templateUrl: 'templates/config/banglai.html',
+            controller: 'banglaiCtrl',
+            resolve: {
+                loadMyDirectives: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        {
+                            name: 'htxApp',
+                            files: [
+                                'scripts/controllers/banglaiCtrl.js',
+
+                            ]
+                        })
+                }
+            }
+        }) 
+      .state('dashboard.province', {
+            url: '/tinh-thanh',
+            templateUrl: 'templates/config/province.html',
+            controller: 'provinceCtrl',
+            resolve: {
+                loadMyDirectives: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        {
+                            name: 'htxApp',
+                            files: [
+                                'scripts/controllers/provinceCtrl.js',
+
+                            ]
+                        })
+                }
+            }
+        }) 
+         .state('dashboard.country', {
             url: '/quoc-gia',
             templateUrl: 'templates/config/country.html',
             controller: 'countryCtrl',

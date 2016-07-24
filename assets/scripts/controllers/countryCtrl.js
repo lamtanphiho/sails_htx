@@ -1,6 +1,6 @@
 
 
-app.controller('countryCtrl', function( $auth, $state, $http, $rootScope, $scope, ngDialog,$General) {
+app.controller('countryCtrl', function(Excel, $timeout, $http, $scope,$General) {
 	$scope.init = function(){
 	var req = {
             method: 'GET',
@@ -14,6 +14,10 @@ app.controller('countryCtrl', function( $auth, $state, $http, $rootScope, $scope
             console.log(error);
         });
     }
+    $scope.exportToExcel=function(tableId){ // ex: '#my-table'
+            $scope.exportHref= Excel.tableToExcel(tableId,'sheet name');
+            $timeout(function(){location.href=$scope.exportHref;},100); // trigger download
+        }
     $scope.delete_country = function(x){
 		
     	var req = {
