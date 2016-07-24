@@ -1,0 +1,100 @@
+
+<style>
+	.country-input{
+		padding:5px;
+		cursor: pointer;
+	}
+</style>
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Quản lý quốc gia</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12 ">
+        <table id="tlb-field" >
+
+            <tr>
+                <td>
+                    <b>Quốc gia:</b>
+                </td>
+                <td style="padding-right: 20px">
+                    <input style="float: right; width: 90%" class="form-control" type="text" value="" id="search-member-id">
+                </td>
+
+                <td>
+                    <input ng-click="searchCountry()"  style="    padding: 5px 10px;" class="form-control btn-success" type="button" value="Tìm" id="search-submit">
+
+                </td>
+                <td style="min-width:30px"></td>
+                 <td>
+                 <button ng_click="show_add_country()" title="Thêm" type="button" class="form-control btn btn-success">Thêm</button>
+                </td>
+               
+                <td>
+                  <button class="btn btn-link" ng-click="exportToExcel('#list-xe')" style="margin-left: 20px;">
+                      <span class="glyphicon glyphicon-share"></span> Export to Excel
+                  </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading" style="font-weight: bold;color: red;font-size: large;">
+                Danh sách quốc gia
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                   <table class="table table-striped table-bordered table-hover" id="list-country">
+                   		<thead>
+	                       <tr>
+	                           <th>Số thứ tự</th>
+	                           <th>Tên Việt Nam</th>
+	                           <th>Têng tiếng anh</th>
+	                           <th>Chức năng</th>
+	                       </tr>
+                   		</thead>
+                   		<tr class="ng-scope" id="new-tr-input" style="display:none">
+                   			<td class="ng-binding">*</td>
+                   			<td>
+                   				<input id="new-vietname_name" type="text" class="form-control" placeholder="Tên Việt Nam">
+                   				<div class="ip-error" id="error-vietname_name"></div>
+               				</td>
+               				<td>
+               					<input id="new-english_name" type="text" class="form-control" placeholder="Tên tiếng anh">
+               					<div class="ip-error" id="error-english_name"></div>
+           					</td>
+       						<td style="text-align: center">
+       							<button ng_click="add_country()" id="new-btn-add-country" title="Lưu" type="button" class="btn btn-info btn-circle">
+       								<i class="fa fa-floppy-o"></i>
+   								</button>
+							</td>
+						</tr>
+                       <tr ng-repeat="x in countries  | orderBy:'-id'">
+                           <td>{{$index + 1}}<input type="hidden" id="id-{{x.id}}" value="{{x.id}}"></td>
+                           <td><label id="vietname_name-{{x.id}}" class="country-input" contenteditable="true">{{x.vietname_name}}</label></td>
+                           <td><label id="english_name-{{x.id}}" class="country-input" contenteditable="true">{{x.english_name}}</label></td>
+                          
+                           <td style="text-align: center" >
+                               <button ng_click="update_country(x.id)" title="Thay đổi" type="button" class="btn btn-info btn-circle"><i class="fa fa-pencil-square-o"></i></button>
+                               <button ng_click="delete_country(x.id)" title="Xóa" type="button" class="btn btn-info btn-circle"><i class="fa fa-trash-o"></i></button>
+                           </td>
+                       </tr>
+                   </table>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+   
+
+
+

@@ -91,6 +91,23 @@ var app = angular
         }
         
     })
+      .state('dashboard.country', {
+            url: '/quoc-gia',
+            templateUrl: 'templates/config/country.html',
+            controller: 'countryCtrl',
+            resolve: {
+                loadMyDirectives: function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        {
+                            name: 'htxApp',
+                            files: [
+                                'scripts/controllers/countryCtrl.js',
+
+                            ]
+                        })
+                }
+            }
+        }) 
       .state('dashboard.xeadd', {
             url: '/xe/add',
             templateUrl: 'templates/xe/add.html',

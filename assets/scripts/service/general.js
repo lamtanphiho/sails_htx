@@ -66,9 +66,11 @@ app.factory('Excel',function($window){
                 key:[]
             };
             $.each(arr, function(key, value){
+              $('#error-'+key).html('');
                 if(value == '' && fielt.indexOf(value) >-1){
                     result.result = false;
                     result.key.push(key) ;
+                    $('#error-'+key).html('Vui lòng nhập ' + key);
                 }
 
             });
