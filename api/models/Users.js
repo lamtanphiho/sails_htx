@@ -87,10 +87,10 @@ module.exports = {
                 next();
             })
     },
-    beforeUpdate: function (values, next) {
+    /*beforeUpdate: function (values, next) {
         CipherService.hashPassword(values);
         next();
-    },
+    },*/
    beforeCreate: function(values, next) {
         bcrypt.genSalt(10, function(err, salt) {
             if (err) return next(err);

@@ -78,7 +78,7 @@
                        <tr ng-repeat="x in banglais  | orderBy:'-id'">
                            <td>{{$index + 1}}<input type="hidden" id="id-{{x.id}}" value="{{x.id}}"></td>
                            <td><label id="hang-{{x.id}}" class="banglai-input" contenteditable="true">{{x.hang}}</label></td>
-                           <td><label id="decription-{{x.id}}" class="banglai-input" contenteditable="true">{{x.decription}}</label></td>
+                           <td><label id="decription-{{x.id}}" class="banglai-input" contenteditable="true">{{x.decription}}...</label></td>
                           
                            <td style="text-align: center" >
                                <button ng_click="update_banglai(x.id)" title="Thay đổi" type="button" class="btn btn-info btn-circle"><i class="fa fa-pencil-square-o"></i></button>

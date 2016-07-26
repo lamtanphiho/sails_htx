@@ -89,59 +89,92 @@
         <!-- /.panel -->
     </div>
     <!-- /.col-lg-12 -->
-    <!--============================================= model: Edit info =========================-->
-    <div class="modal fade" id="editInfo" role="dialog">
+    <!--============================================= model: detail =========================-->
+    <div class="modal fade" id="memberDetail" role="dialog">
         <div class="modal-dialog">
 
             <!-- Modal content-->
             <div class="modal-content" style="background: snow">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                    <h4 class="modal-title">Edit info</h4>
+                    <h4 class="modal-title">Chi tiết</h4>
                 </div>
                 <div class="modal-body row">
                     <input type="hidden" id="user_id">
-                    <div class="form-group col-md-6">
-                        <label for="pass">New password:</label>
-                        <input type="text" class="form-control" id="pass">
-                        <div class="ip-error">{{error.password}}</div>
-                        <label for="passConfirm">New password confirm:</label>
-                        <input type="text" class="form-control" id="passConfirm">
-                        <div class="ip-error">{{error.password_confirmation}}</div>
+                    <div class="form-group col-md-4">
+                    <table>
+                      <tr>
+                        <td class="td-1"><label>Tên đăng nhập: </label></td>
+                        <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.username}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td-1"><label>Họ tên: </label></td>
+                        <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.chu_dautu}}{{currentMember.fullname}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td-1"><label>Ngày sinh: </label></td>
+                        <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.ngaysinh| date:"yyyy-mm-dd"}}{{currentMember.date_born| date:"yyyy-mm-dd"}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td-1"><label>Chứng minh nhân dân: </label></td>
+                        <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.cmnd}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td-1"><label>Email: </label></td>
+                        <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.email}}</td>
+                      </tr>
+                      <tr>
+                        <td class="td-1"><label>Số điện thoại: </label></td>
+                        <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.phone}}</td>
+                      </tr>
+
+                    </table>
                     </div>
-                    <div class="form-group col-md-6">
-                        <label for="bankName">Bank name:</label>
-                        <select type="text" class="form-control" id="bankName"></select>
-                        <label for="bankAccount">Bank account name:</label>
-                        <input type="text" class="form-control" id="bankAccount">
-                        <label for="bankNo">Bank account no:</label>
-                        <input type="text" class="form-control" id="bankNo">
+                    <div class="form-group col-md-4">
+                        <table>
+                          <tr>
+                            <td class="td-1"><label>Vai trò: </label></td>
+                            <td ng-if="currentMember.role=='agent'" style="padding-bottom:5px; padding-left:5px;">Chủ đầu tư</td>
+                            <td ng-if="currentMember.role=='user'" style="padding-bottom:5px; padding-left:5px;">Tài xế</td>
+                          </tr>
+                          <tr>
+                            <td class="td-1"><label>Đơn vị: </label></td>
+                            <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.donvi}}</td>
+                          </tr>
+                          <tr>
+                            <td class="td-1"><label>Quốc tịch: </label></td>
+                            <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.quoctich}}</td>
+                          </tr>
+                          <tr>
+                            <td class="td-1"><label>Hộ khẩu thường trú: </label></td>
+                            <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.hktt}}{{currentMember.noicap_cmnd}}</td>
+                          </tr>
+                          <tr>
+                            <td class="td-1"><label>Điện thoại bàn: </label></td>
+                            <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.dt_ban}}</td>
+                          </tr>
+
+                        </table>
+                    </div>
+                     <div class="form-group col-md-4">
+                        <table  ng-if="currentMember.role=='user'">
+                          <tr>
+                            <td class="td-1"><label>Chọn đơn vị: </label></td>
+                            <td style="padding-bottom:5px; padding-left:5px;">
+                                <select  class="form-control" id="chon-donvi" style="padding:0px">
+                                    <option value=""></option>
+                                    <option value="{{chuxe.username}}" ng-repeat="chuxe in chuxes">{{chuxe.donvi}}</option>
+                                </select>
+                                <div class="ip-error">{{error.donvi}}</div>
+                            </td>
+                          </tr>
+                      </table>
+                      
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" id="saveEditInfo" class="btn btn-primary" ng_click="saveEditInfo()">Save</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <!--============================================= model: assign permissions =========================-->
-    <div class="modal fade" id="assignPermission" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content" style="background: snow">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
-                    <h4 class="modal-title">Assign Permissions</h4>
-                </div>
-                <div class="modal-body">
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" id="assign" class="btn btn-primary" ng_click="assignPermission()">Assign</button>
-                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                    <button ng-if="currentMember.role=='user'" type="button" id="saveEditInfo" class="btn btn-info" ng_click="changeDonvi()">Lưu thay đổi</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
                 </div>
             </div>
 
@@ -152,10 +185,10 @@
 <!-- /.row -->
 <style>
     .modal-dialog {
-        width: 800px !important;
+        width: 60% !important;
     }
-    table,.role-3{
-        /*background: rgba(244, 67, 54, 0.89);*/
+    #memberDetail table tr td.td-1{
+        text-align: right;
     }
     table,.td2{
         border-right: none !important;

@@ -12,7 +12,7 @@ module.exports = {
 		 tokenService.parse(req)
           .then(function(user) {
               if(user.role == 'agent'){
-              	Users.query('SELECT * FROM users, taixe WHERE users.username = taixe.username and users.parent_id = "'+user.username+'"', function(err, results) {
+              	Users.query('SELECT *, users.id as user_id FROM users, taixe WHERE users.username = taixe.username and users.parent_id = "'+user.username+'"', function(err, results) {
         		  			if (err) return res.serverError(err);
         						users = results;
         						return res.ok(users);
@@ -21,7 +21,7 @@ module.exports = {
               	   Users.query('SELECT * FROM users, chuxe WHERE users.username = chuxe.username', function(err, results) {
         					  	if (err) return res.serverError(err);
         					  	users = results;
-        					  	Users.query('SELECT * FROM users, taixe WHERE users.username = taixe.username', function(err, results) {
+        					  	Users.query('SELECT  *, users.id as user_id  FROM users, taixe WHERE users.username = taixe.username', function(err, results) {
         						  	if (err) return res.serverError(err);
         						  	for(var i = 0; i< results.length; i++)
         						  		users.push(results[i]);

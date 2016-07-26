@@ -39,6 +39,8 @@ module.exports.routes = {
    'GET /api/authenticate/user': 'AuthController.user',
    'GET /users/list-user': 'UsersController.getListUser',
    'GET /xe/list-xe': 'XeController.getXe',
+
+   'POST /chuxe/by-username': 'ChuxeController.getChuxeByUsername',
   // users =========================================
   
   'POST /baoduong/byyear': 'BaoduongController.get_baoduong_by_year',
