@@ -43,7 +43,6 @@ app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope,
     }
 
     $scope.confirm = function (_content, data, callback) {
-                //console.log(data);
                 $scope._content = _content;
                 $scope.currentMember = data;
                 $scope.callback = function () {
@@ -56,16 +55,25 @@ app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope,
                 });
             }
 
-    $scope.xoaMem = function(data, callback){
+    $scope.xoaMem = function(){
         $scope.close_confirm();
+        var table = $scope.currentMember.role =='agent' ? 'chuxe' : 'taixe';
          $http({
-            url: 'users/'+$scope.currentMember.user_id,
+            url: table+'/'+$scope.currentMember.id,
             method: "DELETE"
         }).success(function (data) {
-            $scope.init();
+           $http({
+                url: 'users/'+$scope.currentMember.user_id,
+                method: "DELETE"
+            }).success(function (data) {
+                $scope.init();
+            }).error(function (response) {
+                console.log(response.error);
+            });
         }).error(function (response) {
             console.log(response.error);
         });
+         
         
     }
        
