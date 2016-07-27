@@ -18,7 +18,7 @@ module.exports = {
         						return res.ok(users);
         					});
                 }else if(user.role == 'admin'){
-              	   Users.query('SELECT * FROM users, chuxe WHERE users.username = chuxe.username', function(err, results) {
+              	   Users.query('SELECT *, users.id as user_id FROM users, chuxe WHERE users.username = chuxe.username', function(err, results) {
         					  	if (err) return res.serverError(err);
         					  	users = results;
         					  	Users.query('SELECT  *, users.id as user_id  FROM users, taixe WHERE users.username = taixe.username', function(err, results) {

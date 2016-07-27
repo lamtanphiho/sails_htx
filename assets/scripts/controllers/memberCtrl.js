@@ -41,19 +41,62 @@ app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope,
             console.log(response.error);
         });
     }
-    
+
+    $scope.confirm = function (_content, data, callback) {
+                //console.log(data);
+                $scope._content = _content;
+                $scope.currentMember = data;
+                $scope.callback = function () {
+                    callback();
+                };
+                ngDialog.open({
+                    template: 'templates/dialog/confirm.html',
+                    className: 'ngdialog-theme-flat ngdialog-theme-custom',
+                    scope: $scope
+                });
+            }
+
+    $scope.xoaMem = function(data, callback){
+        $scope.close_confirm();
+         $http({
+            url: 'users/'+$scope.currentMember.user_id,
+            method: "DELETE"
+        }).success(function (data) {
+            $scope.init();
+        }).error(function (response) {
+            console.log(response.error);
+        });
+        
+    }
        
     $scope.showDetailmember = function (data) {
-        $http({
-            url: 'chuxe',
-            method: "GET"
-            }).success(function (data_1) {
-                $scope.chuxes = data_1;
-            }).error(function (response) {
-                console.log(response.error);
-        });
+       
         $scope.currentMember = data;
+        // if(data.role=='agent'){
+        //     $scope.currentAgent = {
+        //         email: data.email,
+        //         phone: data.phone
+        //     } 
+        //     $scope.currentChuxe = {
+        //         chu_dautu: data.chu_dautu,
+        //         ngaysinh: data.ngaysinh,
+        //         quoctich: data.quoctich,
+        //         hktt: data.hktt,
+        //         cmnd: data.cmnd,
+        //         donvi: data.donvi,
+        //         dt_ban: data.dt_ban
+        //     }
+        //     console.log($scope.currentAgent, $scope.currentChuxe)
+        // }
         if(data.role=='user'){
+             $http({
+                url: 'chuxe',
+                method: "GET"
+                }).success(function (data_1) {
+                    $scope.chuxes = data_1;
+                }).error(function (response) {
+                    console.log(response.error);
+            });
             $http({
             url: 'chuxe/by-username',
             method: "POST",
@@ -65,10 +108,12 @@ app.controller('memberCtrl', function( $auth, $state, $http, $rootScope, $scope,
                 console.log(response.error);
             });
         }
-        console.log(data);
+        // console.log(data);
         $('#memberDetail').modal('show');
         
     }
-       
+    $scope.close_confirm = function () {
+                angular.element('.ngdialog-close').trigger('click');
+            }
     $scope.init();
 })

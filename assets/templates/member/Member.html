@@ -67,7 +67,7 @@
                            <td>{{mem.email}}</td>
                            
                            <td>
-                               <button ng-click="showEditInfo(mem)"  title="Edit info" type="button" class="btn btn-info btn-circle"><i class="fa fa-pencil "></i>
+                               <button ng-click="confirm('Bạn có chắc chắn muốn xóa tài khoản này ?', mem, xoaMem)"  title="Xóa" type="button" class="btn btn-info btn-circle"><i class="fa fa-trash-o "></i>
                                </button>
                                <button ng-if="mem.role_id < 5 && mem.username != currentUser.username" ng_click="showAssignPermissions(mem)"  title="Assign permissions" type="button" class="btn btn-info btn-circle"><i class="fa fa-retweet"></i></button>
 
@@ -109,7 +109,7 @@
                       </tr>
                       <tr>
                         <td class="td-1"><label>Họ tên: </label></td>
-                        <td style="padding-bottom:5px; padding-left:5px;">{{currentMember.chu_dautu}}{{currentMember.fullname}}</td>
+                        <td contenteditable="true" style="padding-bottom:5px; padding-left:5px;">{{currentMember.chu_dautu}}{{currentMember.fullname}}</td>
                       </tr>
                       <tr>
                         <td class="td-1"><label>Ngày sinh: </label></td>
@@ -173,6 +173,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
+                    <!-- <button ng-if="currentMember.role=='agent'" type="button" id="saveEditInfoAgent" class="btn btn-info" ng_click="UpdateAgent()">Lưu thay đổi</button> -->
                     <button ng-if="currentMember.role=='user'" type="button" id="saveEditInfo" class="btn btn-info" ng_click="changeDonvi()">Lưu thay đổi</button>
                     <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
                 </div>
