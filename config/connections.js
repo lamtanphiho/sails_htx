@@ -46,7 +46,7 @@ module.exports.connections = {
     user: 'root', //optional
     // password: 'Betapp!@#$188', //optional
     password: 'sailshtx', //optional
-    password: '', //optional
+    // password: '', //optional
     database: 'sailshtx', //optional
     timezone: 'utc'
   },
