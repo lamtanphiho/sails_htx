@@ -45,7 +45,7 @@ module.exports.connections = {
     host: 'localhost',
     user: 'root', //optional
     // password: 'Betapp!@#$188', //optional
-    // password: 'sailshtx', //optional
+    password: 'sailshtx', //optional
     password: '', //optional
     database: 'sailshtx', //optional
     timezone: 'utc'
