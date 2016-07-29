@@ -215,6 +215,11 @@ app.controller('addMemberCtrl', function( $auth, $state, $http, $rootScope, $sco
                 });
             }
         }
+        else{
+             $.each(checkRequire.key, function(key, index){
+                    $scope.error[index] = 'Vui lòng nhập '+ index;
+                });
+        }
         if(check.result == true){
             var req = {
                 method: 'POST',
