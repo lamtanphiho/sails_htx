@@ -71,7 +71,7 @@
                                <button ng_click="show_bao_duong(x)" title="Thông tin bảo dưỡng" type="button" class="btn btn-info btn-circle"><i class="fa fa-wrench"></i></button>
                            </td>
                            <td style="text-align: center" >
-                               <button  ng_click="showDetailmember(mem)"  title="chi tiết" type="button" class="btn btn-info btn-circle"><i class="fa fa-list"></i></button>
+                               <button  ng_click="showDetailXe(x)"  title="chi tiết" type="button" class="btn btn-info btn-circle"><i class="fa fa-list"></i></button>
                            </td>
 
                        </tr>
@@ -85,7 +85,63 @@
         <!-- /.panel -->
     </div>
     <!-- /.col-lg-12 -->
-    <!--============================================= model: bảo dưỡng =========================-->
+     <!-- ============================================= model : chi tiết ======================= -->
+    <div class="modal fade" id="chi_tiet" role="dialog">
+        <div class="modal-dialog" style="width:97% !Important">
+
+            <div class="modal-content" style="background: snow">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                    <h4 class="modal-title" style="text-transform: uppercase;">Biển kiểm soát: {{currentXe.bien_so}}</h4>
+                </div>
+                <div class="modal-body" id="" style="overflow-x:auto">
+                    <div class="form-group col-md-3">
+                      <label for="" class="">Chủ xe : <span>{{currentXe.chu_xe}}</span></label><br>
+                      <label for="" class="">Số khung : <span>{{currentXe.so_khung}}</span></label><br>
+                      <label for="" class="">Năm sản xuất : <span>{{currentXe.nam_sx}}</span></label><br>
+                      <label for="" class="">Ngày cấp phù hiệu : <span>{{currentXe.ngay_cap_phu_hieu | date :  "dd-MM-y"}}</span></label><br>
+                      <label for="" class="">Ngày đăng ký GSHT : <span>{{currentXe.ngay_dk_gsht | date :  "dd-MM-y"}}</span></label><br>
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="" class="">Tài xế : <span>{{currentXe.tai_xe}}</span></label><br>
+                      <label for="" class="">Số máy : <span>{{currentXe.so_may}}</span></label><br>
+                      <label for="" class="">Nước sản xuất : <span>{{currentXe.nuoc_sx}}</span></label>
+                      <label for="" class="">Ngày hết hạn phù hiệu : <span>{{currentXe.ngay_het_phu_hieu | date :  "dd-MM-y"}}</span></label><br>
+                      <label for="" class="">Ngày hết hạn GSHT : <span>{{currentXe.ngay_het_gsht | date :  "dd-MM-y"}}</span></label><br>
+
+                    </div>
+                    <div class="form-group col-md-3">
+                      <label for="" class="">Hiệu xe : <span>{{currentXe.hieu_xe}}</span></label><br>
+                      <label for="" class="">Thiết bị giám sát : <span>{{currentXe.thiet_bi_gsht}}</span></label><br>
+                      <label for="" class="">Ngày đăng kiểm : <span>{{currentXe.ngay_dang_kiem | date :  "dd-MM-y"}}</span></label><br>
+                       <label for="" class="">Ngày cấp BHDS : <span>{{currentXe.ngay_cap_bh_dan_su | date :  "dd-MM-y"}}</span></label><br>
+
+                    </div> 
+                    <div class="form-group col-md-3">
+                      <label for="" class="">Loại xe : <span>{{currentXe.loai_xe}}</span></label><br>
+                      <label for="" class="">Trọng tải : <span>{{currentXe.trong_tai}}</span></label><br>
+                      <label for="" class="">Ngày hết hạn đăng kiểm : <span>{{currentXe.ngay_het_dk | date :  "dd-MM-y"}}</span></label><br>
+                      <label for="" class="">Ngày hết hạn BHDS : <span>{{currentXe.ngay_het_bh_dan_su | date :  "dd-MM-y"}}</span></label><br>
+                    </div>
+                    <div class="row" ng-repeat="km in currentXe.km_hanh_trinh">
+                      <div class="col-md-12" style="border-top: 1px dashed;padding-top: 20px;">
+                        <label for="">Kilomet hành trình: {{km.month}} - {{km.year}}</label>
+                      </div>
+                      <div class="col-md-2" ng-repeat="ngay in km.info">
+                        <span ng-if="ngay.km > 0">Ngày {{ngay.date}}: <label>{{ngay.km}} Km</label></span>
+                        <span ng-if="ngay.km == ''">Ngày {{ngay.date}}: <label>...</label></span>
+                      </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="saveEditInfo" class="btn btn-primary" ng_click="update_bao_duong()">Lưu</button>
+                    <button type="button" class="btn btn-primary" data-dismiss="modal">Thoát</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--============================================= model: bảo dưỡng ========================= -->
     <div class="modal fade" id="bao_duong" role="dialog">
         <div class="modal-dialog" style="width:97% !Important">
 
@@ -237,7 +293,7 @@
         </div>
     </div>
 
-    <!--============================================= model: Edit info =========================-->
+    <!--============================================= model: km hanh trinh =========================-->
     <div class="modal fade" id="km_hanh_trinh" role="dialog">
         <div class="modal-dialog">
 

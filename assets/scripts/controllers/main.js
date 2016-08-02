@@ -21,7 +21,7 @@ angular.module('htxApp')
             // console.log('ss',user);
             $rootScope.authenticated = true;
             $rootScope.currentUser = user;
-            $state.go('dashboard.member');
+            $state.go('dashboard.xe');
         }
         else
         {

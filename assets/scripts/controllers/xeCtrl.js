@@ -39,7 +39,9 @@ app
         // ---------------------------------
         var numDate     = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
         var newYear     = true;
+        var newMonth    = true;
         if(xe.km_hanh_trinh == null){
+            newMonth = false;
             var data ={
                 km_hanh_trinh:{
                     0:{
@@ -57,18 +59,22 @@ app
                 data.km_hanh_trinh[0].info.push(obj);
             }
         }else{
-             var km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
+            var km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
             $.each(km_hanh_trinh, function(key, index){
-                if(index.year == $scope.year && index.month == month){
+                if(index.year == $scope.year){
                     newYear = false;
-                    km_hanh_trinh[key].info = [];
-                    for(var i = 1; i<= numDate; i++){
-                        var obj ={
-                            date:i,
-                            km: $('#day-'+i).val()
+                    if(index.month == month){
+                        newMonth = false;
+                        km_hanh_trinh[key].info = [];
+                        for(var i = 1; i<= numDate; i++){
+                            var obj ={
+                                date:i,
+                                km: $('#day-'+i).val()
+                            }
+                            km_hanh_trinh[key].info.push(obj);
                         }
-                        km_hanh_trinh[key].info.push(obj);
                     }
+                    
                 }
             });
             if(newYear){
@@ -89,6 +95,27 @@ app
             var data = {
                 km_hanh_trinh:km_hanh_trinh
             }
+        }
+        if(newMonth){
+            data = {
+                km_hanh_trinh:km_hanh_trinh
+            }
+            var info = []  ;  
+            for(var i = 1; i<= numDate; i++){
+                var obj ={
+                    date:i,
+                    km: $('#day-'+i).val()
+                }
+                info.push(obj);
+            }
+
+            var count_km_hanh_trinh = Object.keys(km_hanh_trinh).length;
+
+            data.km_hanh_trinh[count_km_hanh_trinh]={
+                        year: year,
+                        month: month,
+                        info:info
+                    };
         }
         data.km_hanh_trinh = JSON.stringify(data.km_hanh_trinh);
         $http({
@@ -137,6 +164,12 @@ app
         }).error(function (response) {
             console.log(response.error);
         });
+    }
+    $scope.showDetailXe = function(xe){
+        console.log(xe);
+        xe.km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
+        $scope.currentXe= xe;
+        $('#chi_tiet').modal();
     }
     $scope.show_bao_duong = function(xe){
 
@@ -261,14 +294,17 @@ app
         });
         // return;
         var km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
-        $.each(km_hanh_trinh, function(key, index){
-            if(index.year == $scope.year && index.month <= $scope.month){
-                $.each(index.info, function(k, v){
-                    $scope.km[index.month] += v.km*1;
-                })
-                
-            }
-        })
+        if(km_hanh_trinh != null){
+            $.each(km_hanh_trinh, function(key, index){
+                if(index.year == $scope.year && index.month <= $scope.month){
+                    $.each(index.info, function(k, v){
+                        $scope.km[index.month] += v.km*1;
+                    })
+                    
+                }
+            })
+        }
+        
         $.each($scope.km, function(ke, va){
             if(ke > $scope.month){
                 $('#kmlk-'+ke).attr('disabled', 'disabled');
@@ -293,11 +329,13 @@ app
         var encodeXe    = JSON.stringify(xe);
         var html        ='';
         var newYear     = true;
+        var newMonth    = true;
             html +='<div class="form-group col-md-12">'+
                         '<div class="row"><label for="pass">Tháng '+month+'</label>'+
                         '<input type="hidden" id="xeid" value="'+btoa(encodeURIComponent(encodeXe))+'">'+
                         '</div>';
         if(xe.km_hanh_trinh == null){
+            newMonth = false;
             for(var i = 1; i<= numDate; i++){
                 if(i > day)
                     disable = 'disabled';
@@ -306,10 +344,11 @@ app
             
         }else{
             var km_hanh_trinh = $.parseJSON(xe.km_hanh_trinh);
-            
+            console.log(km_hanh_trinh);
             $.each(km_hanh_trinh, function(key, index){
                 if(index.year == $scope.year && index.month == month){
                     newYear = false;
+                    newMonth = false;
                     $.each(index.info, function(k, ind){
                         if(ind.date > day)
                             disable = 'disabled';
@@ -318,6 +357,13 @@ app
                     })
                 }
             })
+            if(newMonth){
+                 for(var i = 1; i<= numDate; i++){
+                if(i > day)
+                    disable = 'disabled';
+                html += '<div class="form-group col-md-2"><input type="text" class="form-control" id="day-'+i+'" placeholder="Ngày '+i+'" '+disable+'></div>';
+            }
+            }
         }
         html += '</div>';
         $('#km_content').html(html);
